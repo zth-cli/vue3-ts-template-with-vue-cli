@@ -19,6 +19,7 @@ module.exports = {
         deep: true,
         resolvers: [ElementPlusResolver()], // 自动引入element-ui组件
       }),
+      require("unplugin-element-plus/webpack")({}),
     ],
   },
   devServer: {

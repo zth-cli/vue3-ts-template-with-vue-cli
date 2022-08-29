@@ -16,8 +16,8 @@ function addRouter(routeArr: Array<IrouteItem>): RouteConfig[] {
         path: item.path,
         name: item.componentName,
         // component: (resolve) => require([`@/views/${item.componentPath}.vue`], resolve),
-        // component: () => import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`),
-        component: lazyLoad(await import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`)),
+        component: () => import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`),
+        // component: lazyLoad(await import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`)),
         // component: lazyLoad(item.componentPath),
         meta: {
           frameSrc: item.frameSrc ? item.frameSrc : "",

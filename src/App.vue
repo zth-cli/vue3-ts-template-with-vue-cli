@@ -12,7 +12,7 @@ console.log("hello script setup")
 </script>
 
 <template>
-  <el-config-provider :locale="locale">
+  <el-config-provider :locale="locale" :z-index="2000">
     <router-view />
   </el-config-provider>
 </template>

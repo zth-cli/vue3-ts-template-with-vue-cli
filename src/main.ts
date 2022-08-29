@@ -7,7 +7,7 @@ import directives from "./directive"
 // 安装toasts
 import toasts from "./components/Toasts"
 import RegisterIcons from "./icons/index"
-
+import "element-plus/theme-chalk/dark/css-vars.css"
 const app = createApp(App)
 RegisterIcons(app)
 app.use(toasts)
