@@ -4,11 +4,21 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "dev": "npm run serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lints": "vue-cli-service lint",
+    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
+    "dayjs": "^1.11.5",
+    "echarts": "^5.3.3",
+    "element-plus": "^2.2.15",
+    "mitt": "^3.0.0",
+    "nprogress": "^0.2.0",
+    "qs": "^6.11.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -31,6 +41,8 @@
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.5",
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-vue-components": "^0.22.4"
   }
 }

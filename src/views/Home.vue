@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <child id="123" ref="childRef" v-dialogDrag @change="getData">
+      <h4>默认内容</h4>
+    </child>
+    <drag-move :list="[1, 2, 3, 4, 5]" :dragable="true">
+      <li v-for="i in [1, 2, 3, 4, 5]" :key="i">li{{ i }}</li>
+    </drag-move>
+    <overlay v-model="close" title="弹框" oheight="50vh"></overlay>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+<script lang="ts" setup>
+import child from "@/components/child.vue"
+import { overlay } from "@/components/Overlay"
+import { ref, onMounted } from "vue"
 
-export default defineComponent({
-  name: "Home",
-  components: {
-    HelloWorld,
-  },
-});
+const close = ref<boolean>(false)
+onMounted(() => {
+  console.log(process.env.MODE)
+  console.log(process.env)
+
+  console.log(childRef.value)
+})
+const childRef = ref<InstanceType<typeof child>>(null)
+const getData = (id: number) => {
+  close.value = !close.value
+}
 </script>
+<style></style>
