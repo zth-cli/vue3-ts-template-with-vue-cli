@@ -5,3 +5,8 @@
   --el-color-primary: var(--color-primary);
   --el-color-warning: var(--color-warning);
 }
+html.dark {
+  --el-bg-color: var(--background);
+  --el-color-primary: var(--color-primary);
+  --el-color-warning: var(--color-warning);
+}
