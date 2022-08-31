@@ -193,7 +193,7 @@ watch(switchData, async () => {
 <style lang="scss">
 $linehieht: 40px;
 .curd-condition-bar {
-  background-color: #fff;
+  background-color: var(--content-background);
   margin-bottom: 12px;
   border-radius: 4px;
   padding: 0 12px;

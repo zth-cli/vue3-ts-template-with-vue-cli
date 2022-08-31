@@ -223,7 +223,7 @@ watch(fromData, (params) => {
   color: #409eff;
 }
 .curd_tool_bar {
-  background-color: #fff;
+  background-color: var(--content-background);
   // @include content-background();
   padding: 14px;
   border-radius: 4px 4px 0 0;

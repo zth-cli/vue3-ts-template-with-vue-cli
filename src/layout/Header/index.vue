@@ -124,6 +124,7 @@ const reloadPage = () => {
   width: 100%;
   height: 60px;
   font-size: 20px;
+  background-color: var(--content-background);
   i {
     // @include font_color(#fff);
     font-size: 16px;

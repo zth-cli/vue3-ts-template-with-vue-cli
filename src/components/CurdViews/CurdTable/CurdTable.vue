@@ -276,7 +276,7 @@ interface ItableProp {
 </script>
 <style lang="scss">
 .curd_table {
-  background-color: #fff;
+  background-color: var(--content-background);
   padding: 10px;
   border-radius: 4px;
   .panel_tool {
