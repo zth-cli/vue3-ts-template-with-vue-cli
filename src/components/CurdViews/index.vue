@@ -22,7 +22,7 @@
         <template #default="{ node, data }">
           <slot v-bind="{ node, data }">
             <i class="el-icon-folder"> </i>
-            <span>{{ data[props.treeOptions.treeProps["label"]] }}</span>
+            <span>{{ data[props.treeOptions.treeProps['label']] }}</span>
           </slot>
         </template>
       </Tree>
@@ -80,13 +80,13 @@
 </template>
 
 <script lang="ts" setup>
-import { Tree } from "./Tree"
-import LazyTree from "./LazyTree.vue"
-import { CurdTable } from "./CurdTable"
-import { ConditionBar } from "./ConditionBar"
-import { emits } from "./CurdTable/enums"
-import { reactive, ref } from "vue"
-import { IformItem, ItableProps, ItreeProps } from "./type"
+import { Tree } from './Tree'
+import LazyTree from './LazyTree.vue'
+import { CurdTable } from './CurdTable'
+import { ConditionBar } from './ConditionBar'
+import { emits } from './CurdTable/enums'
+import { reactive, ref } from 'vue'
+import { IformItem, ItableProps, ItreeProps } from './type'
 
 const tableView = ref(null)
 const toggle = ref<boolean>(false)
@@ -108,21 +108,21 @@ const emit = defineEmits(emits)
 
 // 获取table数据,推荐此做法获取tableData
 const getTableData = (rows) => {
-  emit("getTableData", rows)
+  emit('getTableData', rows)
 }
 const tableData = () => {
   // 此方法会直接暴露tableData，可对表格数据直接增删操作，建议在getTableData事件之后获取数据
   return tableView.value.tableData
 }
 const rowClick = (row) => {
-  emit("row-click", row)
+  emit('row-click', row)
 }
 const rowDblclick = (row) => {
-  emit("row-dblclick", row)
+  emit('row-dblclick', row)
 }
 const selectionChange = (selection) => {
   if (selection) {
-    emit("selection-change", selection)
+    emit('selection-change', selection)
   }
 }
 const toggleRowSelection = (rows) => {
@@ -137,19 +137,19 @@ defineExpose({
   toggleAllSelection,
 })
 const handleCurrentChange = (row) => {
-  emit("current-change", row)
+  emit('current-change', row)
 }
 const deleteRows = (rows) => {
-  emit("row-delete", rows)
+  emit('row-delete', rows)
 }
 const editRow = (row) => {
-  emit("row-edit", row)
+  emit('row-edit', row)
 }
 const addRow = (bool) => {
-  emit("row-add", bool)
+  emit('row-add', bool)
 }
 const paramsChange = (params) => {
-  emit("params-change", params)
+  emit('params-change', params)
   // eslint-disable-next-line vue/no-mutating-props
   props.tableOptions.params = Object.assign({}, props.tableOptions.params, params)
 }
@@ -157,7 +157,7 @@ const triggerTree = (bool: boolean) => {
   toggle.value = bool
 }
 const treeNodeClick = ({ data, node }) => {
-  emit("node-click", { data, node })
+  emit('node-click', { data, node })
 }
 const query = () => {
   tableView.value.queryData()
@@ -170,7 +170,7 @@ const getSlot = () => {
   function Maps(mColumns) {
     mColumns.forEach((item) => {
       const keys = Object.keys(item)
-      if (keys.includes("slot")) {
+      if (keys.includes('slot')) {
         slotArr.value.push(item)
         // console.log("slot=", that.slotArr);
       }
@@ -186,7 +186,7 @@ const getHeaderSlot = () => {
   function Maps(mColumns) {
     mColumns.forEach((item) => {
       const keys = Object.keys(item)
-      if (keys.includes("headerSlot")) {
+      if (keys.includes('headerSlot')) {
         headerSlotArr.value.push(item)
       }
       if (item.childrens && item.childrens.length > 0) {
@@ -197,10 +197,10 @@ const getHeaderSlot = () => {
   Maps(mColumns)
 }
 const nodeExpand = (data, node) => {
-  emit("node-expand", data, node)
+  emit('node-expand', data, node)
 }
 const tabClick = (val) => {
-  emit("tab-click", val)
+  emit('tab-click', val)
 }
 getSlot()
 getHeaderSlot()

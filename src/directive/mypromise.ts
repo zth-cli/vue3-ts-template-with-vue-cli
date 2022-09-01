@@ -1,5 +1,5 @@
 class MyPromise {
-  status = "pending" // 等待状态
+  status = 'pending' // 等待状态
   value = null // 成功或失败的参数
   fulfilledCallbacks = [] // 成功的函数队列
   rejectedCallbacks = [] // 失败的函数队列
@@ -13,16 +13,16 @@ class MyPromise {
     // executor执行器
     function resolve(value: any) {
       // 成功的方法
-      if (this.status === "pending") {
-        this.status = "resolved"
+      if (this.status === 'pending') {
+        this.status = 'resolved'
         this.value = value
         this.fulfilledCallbacks.forEach((myFn) => myFn(this.value)) //执行回调方法
       }
     }
     function reject(value: any) {
       //失败的方法
-      if (this.status === "pending") {
-        this.status = "rejected"
+      if (this.status === 'pending') {
+        this.status = 'rejected'
         this.value = value
         this.rejectedCallbacks.forEach((myFn) => myFn(this.value)) //执行回调方法
       }
@@ -34,7 +34,7 @@ class MyPromise {
     }
   }
   then(onFulfilled, onRejected) {
-    if (this.status === "pending") {
+    if (this.status === 'pending') {
       // 等待状态，添加回调函数到成功的函数队列
       this.fulfilledCallbacks.push(() => {
         onFulfilled(this.value)
@@ -44,12 +44,12 @@ class MyPromise {
         onRejected(this.value)
       })
     }
-    if (this.status === "resolved") {
+    if (this.status === 'resolved') {
       // 支持同步调用
-      console.log("this", this)
+      console.log('this', this)
       onFulfilled(this.value)
     }
-    if (this.status === "rejected") {
+    if (this.status === 'rejected') {
       // 支持同步调用
       onRejected(this.value)
     }
@@ -70,9 +70,9 @@ function fn() {
 }
 fn().then(
   (res) => {
-    console.log("res", res) // res 1
+    console.log('res', res) // res 1
   },
   (err) => {
-    console.log("err", err) // err 2
+    console.log('err', err) // err 2
   }
 )

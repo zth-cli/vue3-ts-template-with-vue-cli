@@ -1,4 +1,4 @@
-import { onBeforeUpdate, onUpdated } from "vue"
+import { onBeforeUpdate, onUpdated } from 'vue'
 
 export const useItemRefs = () => {
   let itemRefs = []

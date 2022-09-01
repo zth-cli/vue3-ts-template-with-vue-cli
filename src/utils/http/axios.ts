@@ -6,11 +6,11 @@ import axios, {
   Canceler,
   AxiosError,
   Method,
-} from "axios"
-import { genConfig } from "./config"
-import { transformConfigByMethod } from "./utils"
-import { httpStatus } from "./httpStatus"
-import { ElMessage } from "element-plus"
+} from 'axios'
+import { genConfig } from './config'
+import { transformConfigByMethod } from './utils'
+import { httpStatus } from './httpStatus'
+import { ElMessage } from 'element-plus'
 
 type cancelTokenItem = {
   cancelKey: string
@@ -31,7 +31,7 @@ class FetchHttp {
   // axios取消对象
   private CancelToken = axios.CancelToken as CancelTokenStatic
   // 本次请求的标识 和 取消函数
-  private currentCabcelToken = ""
+  private currentCabcelToken = ''
 
   // 每次请求设置唯一标识
   private static setCancelTokenString(config: AxiosRequestConfig): string {
@@ -92,7 +92,7 @@ class FetchHttp {
         // 请求每次成功一次就删除当前canceltoken标记
         const cancelKey = FetchHttp.setCancelTokenString(_config)
         this.deleteCancelTokenString(cancelKey)
-        this.currentCabcelToken = ""
+        this.currentCabcelToken = ''
         return response.data
       },
       (error: FetchHttppError) => {
@@ -106,16 +106,16 @@ class FetchHttp {
             this.sourceTokenList = this.sourceTokenList.filter(
               (cancelToken) => cancelToken.cancelKey !== this.currentCabcelToken
             )
-            this.currentCabcelToken = ""
+            this.currentCabcelToken = ''
           }
         }
         $error.isCancelRequest = axios.isCancel($error)
         // 所有的响应异常 区分来源为取消请求/非取消请求
         // httpStatus
         if (!$error.isCancelRequest) {
-          httpStatus(error.response && error.response.status, "", ElMessage)
+          httpStatus(error.response && error.response.status, '', ElMessage)
         } else {
-          console.warn(error, "请求被取消！")
+          console.warn(error, '请求被取消！')
         }
         return Promise.reject($error)
       }
@@ -142,11 +142,11 @@ class FetchHttp {
     })
   }
   public post<T>(url: string, params?: any, config?: AxiosRequestConfig): Promise<T> {
-    return this.request<T>("post", url, params, config)
+    return this.request<T>('post', url, params, config)
   }
 
   public get<T>(url: string, params?: any, config?: AxiosRequestConfig): Promise<T> {
-    return this.request<T>("get", url, params, config)
+    return this.request<T>('get', url, params, config)
   }
 }
 export default FetchHttp

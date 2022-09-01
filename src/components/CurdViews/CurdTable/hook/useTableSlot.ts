@@ -6,8 +6,8 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue3-ts-template-with-webpack\src\components\CurdViews\CurdTable\hook\useTableSlot.ts
  */
-import { Ref, ref } from "vue"
-import { Icolumns } from "../../type"
+import { Ref, ref } from 'vue'
+import { Icolumns } from '../../type'
 export function useTableSlot(mColumns: Ref<Icolumns[]>) {
   const slotArr = ref<Array<any>>([])
   const Columns = mColumns.value
@@ -15,7 +15,7 @@ export function useTableSlot(mColumns: Ref<Icolumns[]>) {
   function Maps(Columns: any[]) {
     Columns.forEach((item: { childrens?: any }) => {
       const keys = Object.keys(item)
-      if (keys.includes("slot")) {
+      if (keys.includes('slot')) {
         slotArr.value.push(item)
       }
       if (item.childrens && item.childrens.length > 0) {

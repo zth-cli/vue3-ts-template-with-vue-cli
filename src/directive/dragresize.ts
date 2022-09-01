@@ -1,11 +1,11 @@
-import { App } from "vue"
+import { App } from 'vue'
 // import bus from "@/plugins/bus";
 
 const directives = {
   drag: {
     mounted(el: any, binding: any, vnode: any) {
       // 如果传递了false就不启用指令，反之true undefined null 不传 则启动
-      if (!binding.value && (binding.value ?? "") !== "") {
+      if (!binding.value && (binding.value ?? '') !== '') {
         return
       }
       // 拖拽实现
@@ -46,8 +46,8 @@ const directives = {
             top = maxY
           }
 
-          odiv.style.left = left + "px"
-          odiv.style.top = top + "px"
+          odiv.style.left = left + 'px'
+          odiv.style.top = top + 'px'
           odiv.style.marginLeft = 0
           odiv.style.marginTop = 0
         }
@@ -60,40 +60,40 @@ const directives = {
   resize: {
     mounted(el: any, binding: any, vnode: any) {
       // 如果传递了false就不启用指令，反之true undefined null 不传 则启动
-      if (!binding.value && (binding.value ?? "") !== "") {
+      if (!binding.value && (binding.value ?? '') !== '') {
         return
       }
       // 给选定的元素绑定name属性 设置name为resize区分只有该元素可以缩放
-      el.name = "resize"
+      el.name = 'resize'
       // 八个方位对应
       const mouseDir: any = {
-        top: "n-resize", //上
-        bottom: "s-resize", //下
-        left: "w-resize", //左
-        right: "e-resize", //右
-        topright: "ne-resize", //右上
-        topleft: "nw-resize", //左上
-        bottomleft: "sw-resize", //左下
-        bottomright: "se-resize", //右下
+        top: 'n-resize', //上
+        bottom: 's-resize', //下
+        left: 'w-resize', //左
+        right: 'e-resize', //右
+        topright: 'ne-resize', //右上
+        topleft: 'nw-resize', //左上
+        bottomleft: 'sw-resize', //左下
+        bottomright: 'se-resize', //右下
       }
       // 记录被修改元素的原始位置大小，以及变更方向
-      const pos = { width: 0, height: 0, top: 0, left: 0, x: 0, y: 0, dir: "" }
+      const pos = { width: 0, height: 0, top: 0, left: 0, x: 0, y: 0, dir: '' }
       // 获取鼠标所在方位
       const getDirection = (ev: any): string => {
-        let dir = ""
+        let dir = ''
         const xP = ev.offsetX
         const yP = ev.offsetY
         const offset = 12 //内边距为多少时触发
         // 计算是那个方位
         if (yP < offset) {
-          dir += "top"
+          dir += 'top'
         } else if (yP > ev.toElement.clientHeight - offset) {
-          dir += "bottom"
+          dir += 'bottom'
         }
         if (xP < offset) {
-          dir += "left"
+          dir += 'left'
         } else if (xP > ev.toElement.clientWidth - offset) {
-          dir += "right"
+          dir += 'right'
         }
         return dir
       }
@@ -109,7 +109,7 @@ const directives = {
         pos.left = 0
         pos.x = 0
         pos.y = 0
-        pos.dir = ""
+        pos.dir = ''
         document.onmousemove = null
       }
       // 变更尺寸方法
@@ -127,21 +127,21 @@ const directives = {
           if (subHig <= minY) {
             return
           } //不能小于最小最高
-          el.style.height = subHig + "px"
-          el.style.top = pos.top + disY + "px"
+          el.style.height = subHig + 'px'
+          el.style.top = pos.top + disY + 'px'
         } // 上
         const bottom = () => {
-          el.style.height = addHig + "px"
+          el.style.height = addHig + 'px'
         } // 下
         const left = () => {
           if (subWid <= minX) {
             return
           } //不能小于最小宽度
-          el.style.width = subWid + "px"
-          el.style.left = pos.left + disX + "px"
+          el.style.width = subWid + 'px'
+          el.style.left = pos.left + disX + 'px'
         } // 左
         const right = () => {
-          el.style.width = addWid + "px"
+          el.style.width = addWid + 'px'
         } // 右
         // 变更方位及其修改方法映射
         const doFn: any = {
@@ -170,7 +170,7 @@ const directives = {
       }
       //鼠标按下 触发变更事件
       el.onmousedown = (e: any) => {
-        if (e.target.name !== "resize") {
+        if (e.target.name !== 'resize') {
           return
         }
         const d = getDirection(e)
@@ -191,14 +191,14 @@ const directives = {
       /** 鼠标样式变更 */
       const changeShowCursor = (e: any) => {
         e.preventDefault()
-        el.style.cursor = "default" //先恢复鼠标默认
-        if (e.target.name !== "resize") {
+        el.style.cursor = 'default' //先恢复鼠标默认
+        if (e.target.name !== 'resize') {
           return
         }
         // 修改鼠标显示效果
         const d = getDirection(e)
         // 确定是某个方位的动向
-        el.style.cursor = mouseDir[d] || "default"
+        el.style.cursor = mouseDir[d] || 'default'
       }
       el.onmousemove = changeShowCursor //监听根元素上移动的鼠标事件
     },

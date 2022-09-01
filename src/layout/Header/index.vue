@@ -56,14 +56,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Menu } from "../Menu"
-import { Breadcrumb } from "../Breadcrumb"
-import AppSettingBar from "./AppSettingBar.vue"
-import { removeAllStorge } from "@/utils/auth"
-import { useRouter, useRoute } from "vue-router"
-import { Ref, ref, unref, computed } from "vue"
-import bus from "@/utils/bus"
-import { useStore } from "vuex"
+import { Menu } from '../Menu'
+import { Breadcrumb } from '../Breadcrumb'
+import AppSettingBar from './AppSettingBar.vue'
+import { removeAllStorge } from '@/utils/auth'
+import { useRouter, useRoute } from 'vue-router'
+import { Ref, ref, unref, computed } from 'vue'
+import bus from '@/utils/bus'
+import { useStore } from 'vuex'
 
 const store = useStore()
 const router = useRouter()
@@ -82,14 +82,14 @@ const menuMode = computed(() => store.getters.menuMode)
 // 收起展开侧边菜单
 const handleCollapse = () => {
   collapse.value = !collapse.value
-  bus.emit("swithCollapse", collapse.value)
+  bus.emit('swithCollapse', collapse.value)
 }
 
 const handleCommand = (command: string) => {
-  if (command === "loginout") {
+  if (command === 'loginout') {
     removeAllStorge()
-    router.replace("/login")
-  } else if (command === "updataPassword") {
+    router.replace('/login')
+  } else if (command === 'updataPassword') {
     // TODO
   }
 }
@@ -110,7 +110,7 @@ const toggleThemeBar = (bool: boolean) => {
 // 刷新页面
 const reloadPage = () => {
   router.push({
-    path: "/redirect" + unref(route).fullPath,
+    path: '/redirect' + unref(route).fullPath,
   })
 }
 </script>

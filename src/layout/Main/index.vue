@@ -14,10 +14,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue"
-import { RouterView } from "vue-router"
-import { useRoute } from "vue-router"
-import { useStore } from "vuex"
+import { computed } from 'vue'
+import { RouterView } from 'vue-router'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 
 const store = useStore()
 const route = useRoute()

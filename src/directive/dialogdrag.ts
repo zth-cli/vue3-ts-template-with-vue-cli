@@ -11,8 +11,8 @@ const dialogDrag = (el: HTMLElement, binding: { [x: string]: any }) => {
   }
   const dialogHeaderEl = binding.value?.handle ? el.querySelector(binding.value.handle) : el
   const dragDom = el
-  dialogHeaderEl.style.cssText += ";cursor:move;"
-  dragDom.style.cssText += ";top:0px;"
+  dialogHeaderEl.style.cssText += ';cursor:move;'
+  dragDom.style.cssText += ';top:0px;'
 
   // 获取原有属性 ie dom元素.currentStyle 火狐谷歌 window.getComputedStyle(dom元素, null);
   const sty = (function () {
@@ -42,16 +42,16 @@ const dialogDrag = (el: HTMLElement, binding: { [x: string]: any }) => {
     const maxDragDomTop = screenHeight - dragDom.offsetTop - dragDomheight
 
     // 获取到的值带px 正则匹配替换
-    let styL = sty(dragDom, "left")
-    let styT = sty(dragDom, "top")
+    let styL = sty(dragDom, 'left')
+    let styT = sty(dragDom, 'top')
 
     // 注意在ie中 第一次获取到的值为组件自带50% 移动之后赋值为px
-    if (styL.includes("%")) {
-      styL = +document.body.clientWidth * (+styL.replace(/\\%/g, "") / 100)
-      styT = +document.body.clientHeight * (+styT.replace(/\\%/g, "") / 100)
+    if (styL.includes('%')) {
+      styL = +document.body.clientWidth * (+styL.replace(/\\%/g, '') / 100)
+      styT = +document.body.clientHeight * (+styT.replace(/\\%/g, '') / 100)
     } else {
-      styL = +styL.replace(/\px/g, "")
-      styT = +styT.replace(/\px/g, "")
+      styL = +styL.replace(/\px/g, '')
+      styT = +styT.replace(/\px/g, '')
     }
 
     document.onmousemove = function (e) {

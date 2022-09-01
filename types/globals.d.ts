@@ -55,7 +55,7 @@ declare interface Fn<T = any, R = T> {
   (...arg: T[]): R
 }
 
-import { IDatePickerType } from "element-plus/es/components/date-picker/src/date-picker.type"
+import { IDatePickerType } from 'element-plus/es/components/date-picker/src/date-picker.type'
 
 interface ItreeProps {
   dataUrl?: string

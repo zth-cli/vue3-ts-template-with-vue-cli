@@ -14,16 +14,16 @@ interface AppSettingState {
 const env = process.env
 
 function checkStorange(key: string) {
-  const temp = env["VITE_" + key]
+  const temp = env['VITE_' + key]
   return localStorage.getItem(key) !== null ? localStorage.getItem(key) : temp
 }
 
 const appSettings = {
   state: (): AppSettingState => ({
-    sidebarLogo: checkStorange("sidebarLogo") === "true" ? true : false,
-    menuMode: checkStorange("menuMode"),
-    tagsBar: checkStorange("tagsBar") === "true" ? true : false,
-    showThemeBar: checkStorange("showThemeBar") === "true" ? true : false,
+    sidebarLogo: checkStorange('sidebarLogo') === 'true' ? true : false,
+    menuMode: checkStorange('menuMode'),
+    tagsBar: checkStorange('tagsBar') === 'true' ? true : false,
+    showThemeBar: checkStorange('showThemeBar') === 'true' ? true : false,
   }),
 
   mutations: {
@@ -39,7 +39,7 @@ const appSettings = {
     changeSetting({ commit, state, getters }: any, data: any) {
       console.log(1)
 
-      commit("CHANGE_SETTING", data)
+      commit('CHANGE_SETTING', data)
     },
   },
 }

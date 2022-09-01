@@ -6,6 +6,6 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue3-template-with-ts\src\components\Overlay\index.ts
  */
-import overlay from "./index.vue"
+import overlay from './index.vue'
 
 export { overlay }

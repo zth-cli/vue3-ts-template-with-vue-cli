@@ -12,7 +12,7 @@ const throttle = {
     }
     let timer
     el.addEventListener(
-      "click",
+      'click',
       (event) => {
         if (!timer) {
           // 第一次执行

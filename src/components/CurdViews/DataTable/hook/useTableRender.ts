@@ -1,8 +1,8 @@
-import { h, toRefs } from "vue"
-import { ElTag, ElTableColumn } from "element-plus/es"
-import "element-plus/es/components/tag/style/css"
-import "element-plus/es/components/table-column/style/css"
-import { Icolumns } from "../../type"
+import { h, toRefs } from 'vue'
+import { ElTag, ElTableColumn } from 'element-plus/es'
+import 'element-plus/es/components/tag/style/css'
+import 'element-plus/es/components/table-column/style/css'
+import { Icolumns } from '../../type'
 type Iscope = { row?: { [x: string]: any }; column?: any; $index?: number }
 
 export default function renderFunc(props: any, slots: any) {
@@ -16,12 +16,12 @@ export default function renderFunc(props: any, slots: any) {
       if (item.filters) {
         columnProps.filterMethod = item.filterMethod ? item.filterMethod : filterHandler
       }
-      if (item.type === "index") {
+      if (item.type === 'index') {
         // @ts-ignore
         return h(ElTableColumn, columnProps, {
           default: (scope: { $index: number; row: any; column: any }) => {
             let index = null
-            let indexEle = ""
+            let indexEle = ''
             index = showPage.value ? (pageIndex.value - 1) * pageSize.value + scope.$index + 1 : scope.$index + 1
             if (item.slot) {
               // type为index 且有slot，提供插槽功能
@@ -31,18 +31,18 @@ export default function renderFunc(props: any, slots: any) {
                 index: scope.$index,
               })
             }
-            return [h("p", [indexEle, h("span", index)])]
+            return [h('p', [indexEle, h('span', index)])]
           },
         })
       }
-      if (item.type === "selection") {
+      if (item.type === 'selection') {
         // @ts-ignore
         return h(ElTableColumn, {
           ...columnProps,
           type: item.type,
         })
       }
-      if (item.type === "expand") {
+      if (item.type === 'expand') {
         return h(
           // @ts-ignore
           ElTableColumn,
@@ -54,7 +54,7 @@ export default function renderFunc(props: any, slots: any) {
             // scope 就相当于 slot-scope="{title}" 里面的值
             default: (scope: { row: any; column: any; $index: any }) => {
               return [
-                h("p", [
+                h('p', [
                   slots[item.slot]({
                     row: scope.row,
                     colum: scope.column,
@@ -71,7 +71,7 @@ export default function renderFunc(props: any, slots: any) {
         return h(ElTableColumn, columnProps, {
           header: (scope: Iscope) => {
             return [
-              h("p", [
+              h('p', [
                 slots[item.headerSlot]({
                   row: scope.row,
                   colum: scope.column,
@@ -87,7 +87,7 @@ export default function renderFunc(props: any, slots: any) {
         return h(ElTableColumn, columnProps, {
           default: (scope: Iscope) => {
             return [
-              h("p", [
+              h('p', [
                 slots[item.slot]({
                   row: scope.row,
                   colum: scope.column,
@@ -98,7 +98,7 @@ export default function renderFunc(props: any, slots: any) {
           },
           header: (scope: Iscope) => {
             return [
-              h("p", [
+              h('p', [
                 slots[item.headerSlot]({
                   row: scope.row,
                   colum: scope.column,
@@ -115,7 +115,7 @@ export default function renderFunc(props: any, slots: any) {
           // `<div><child v-slot="props"><span>{{ props.text }}</span></child></div>`
           default: (scope: Iscope) => {
             return [
-              h("p", [
+              h('p', [
                 slots[item.slot]({
                   row: scope.row,
                   colum: scope.column,
@@ -139,8 +139,8 @@ export default function renderFunc(props: any, slots: any) {
                   // @ts-ignore
                   ElTag,
                   {
-                    size: "small",
-                    type: element.type ? element.type : "",
+                    size: 'small',
+                    type: element.type ? element.type : '',
                   },
                   {
                     default: () => {

@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue3-template-with-ts\src\hooks\useMouseTracker.ts
  */
-import { ref, onMounted, onUnmounted } from "vue"
+import { ref, onMounted, onUnmounted } from 'vue'
 
 export function useMouseTracker() {
   const x = ref(0)
@@ -17,7 +17,7 @@ export function useMouseTracker() {
     y.value = e.pageY
   }
 
-  onMounted(() => window.addEventListener("mousemove", update))
-  onUnmounted(() => window.removeEventListener("mousemove", update))
+  onMounted(() => window.addEventListener('mousemove', update))
+  onUnmounted(() => window.removeEventListener('mousemove', update))
   return { x, y }
 }

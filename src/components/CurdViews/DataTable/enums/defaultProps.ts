@@ -7,7 +7,7 @@ export const defaultProps = {
     type: Array,
   },
   tableSize: {
-    default: "default",
+    default: 'default',
   },
   pageSize: {
     default: 20,
@@ -34,7 +34,7 @@ export const defaultProps = {
   dataUrl: {},
   params: {},
   height: {
-    default: "66vh",
+    default: '66vh',
   },
   maxHeight: {
     type: String,
@@ -55,11 +55,11 @@ export const defaultProps = {
     // 合并单元格
     type: Function,
   },
-  rowKey: { type: String, default: "id" }, // 支持树类型的数据的显示,rowKey不为空时生效
+  rowKey: { type: String, default: 'id' }, // 支持树类型的数据的显示,rowKey不为空时生效
   treeProps: {
     type: Object,
     default: function () {
-      return { children: "children", hasChildren: "hasChildren" }
+      return { children: 'children', hasChildren: 'hasChildren' }
     },
   },
   stripe: {

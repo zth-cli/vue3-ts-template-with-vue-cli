@@ -4,13 +4,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, unref, onMounted, nextTick } from "vue"
-import { useRoute } from "vue-router"
+import { ref, unref, onMounted, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
 
 const currentRoute = useRoute()
 const loading = ref(false)
 const frameRef = ref<HTMLElement | null>(null)
-const frameSrc = ref<string>("")
+const frameSrc = ref<string>('')
 
 if (unref(currentRoute.meta)?.frameSrc) {
   frameSrc.value = unref(currentRoute.meta)?.frameSrc as string
@@ -28,7 +28,7 @@ const init = () => {
     }
     const _frame = iframe as any
     if (_frame.attachEvent) {
-      _frame.addEventListener("onload", () => {
+      _frame.addEventListener('onload', () => {
         hideLoading()
       })
     } else {

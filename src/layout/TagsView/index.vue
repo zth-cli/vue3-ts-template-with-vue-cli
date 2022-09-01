@@ -1,25 +1,23 @@
 <template>
   <div v-if="showTags" class="tags">
-    <el-tabs
-      v-model="activeValue"
-      :closable="!(tagsList.length == 1)"
-      type="card"
-      size="small"
-      @tab-click="changeTab"
-      @tab-remove="closeTags"
-    >
-      <el-tab-pane
+    <div>
+      <el-tag
+        class="tags-item"
         v-for="item in tagsList"
+        size="default"
+        closable
+        @click="changeTab(item)"
+        @close="closeTags(item)"
         :key="item.path"
-        :label="item.title"
-        :name="item.title"
-        :tab="item"
-      ></el-tab-pane>
-    </el-tabs>
+        :type="activeValue !== item.title ? 'info' : ''"
+        >{{ item.title }}</el-tag
+      >
+    </div>
+
     <div class="tags-close-box">
       <el-dropdown placement="bottom" @command="handleTags">
         <!-- <i class="el-icon-arrow-down drop-icon"></i> -->
-        <el-button icon="el-icon-arrow-down" style="border: none"></el-button>
+        <el-button icon="ArrowDown" size="small" style="border: none"></el-button>
         <template #dropdown>
           <el-dropdown-menu size="small">
             <el-dropdown-item command="other">关闭其他</el-dropdown-item>
@@ -31,13 +29,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import bus from "@/utils/bus"
-import { RouteLocationNormalizedLoaded, useRoute, useRouter } from "vue-router"
-import { ref, Ref, watch, computed } from "vue"
+import bus from '@/utils/bus'
+import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
+import { ref, Ref, watch, computed } from 'vue'
 const route = useRoute()
 const router = useRouter()
 const tagsList: Ref<Array<any>> = ref([])
-const activeValue: Ref<string> = ref("")
+const activeValue: Ref<string> = ref('')
 // 设置标签route
 const setTags = (route: RouteLocationNormalizedLoaded) => {
   const routeObj = {
@@ -56,7 +54,7 @@ const setTags = (route: RouteLocationNormalizedLoaded) => {
     tagsList.value.push(routeObj)
   }
   activeValue.value = route.meta.title
-  bus.emit("tags", tagsList.value)
+  bus.emit('tags', tagsList.value)
 }
 // 关闭单个标签
 const closeTags = (tabName: string) => {
@@ -68,18 +66,19 @@ const closeTags = (tabName: string) => {
     // 更改路由，watch监听，调用setTags,触发自定义事件tags
     delItem.fullPath === route.fullPath && router.push(item.fullPath)
   } else {
-    router.push("/")
+    router.push('/')
   }
 }
-const changeTab = (component: { instance: { attrs: { tab: any } } }) => {
+const changeTab = (data) => {
+  console.log(data)
+
   // console.log(component.instance.attrs.tab )
-  const tab = component.instance.attrs.tab
-  router.push(tab.path)
+  router.push(data.path)
 }
 // 关闭全部标签
 const closeAll = () => {
   tagsList.value = []
-  router.push("/")
+  router.push('/')
 }
 // 关闭其他标签
 const closeOther = () => {
@@ -90,7 +89,7 @@ const closeOther = () => {
 }
 // 设置标签route
 const handleTags = (command: string) => {
-  command === "other" ? closeOther() : closeAll()
+  command === 'other' ? closeOther() : closeAll()
 }
 setTags(route)
 watch(route, (newValue) => {
@@ -114,75 +113,13 @@ const showTags = computed(() => tagsList.value.length > 0)
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 19px 8px 10px;
-  // @include box-shadow();
-  .el-tabs--top.el-tabs--card > .el-tabs__header {
-    border: none;
-  }
-  .el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:nth-child(2) {
-    padding-left: 5px;
-  }
-  .el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:last-child {
-    padding-right: 5px;
-  }
-  .el-tabs--card > .el-tabs__header .el-tabs__item.is-active.is-closable {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .el-tabs--card > .el-tabs__header .el-tabs__nav {
-    border: none;
-  }
-  .el-tabs__header {
-    border: none;
-    margin: 0;
-    .el-tabs__item {
-      margin: 3px 5px 3px 3px;
-      border-radius: 3px;
-      font-size: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      height: 32px;
-      padding: 6px 12px 4px !important;
-      vertical-align: middle;
-
-      transition: all 0.3s ease-in;
-      line-height: 22px;
-      text-align: center;
-      border: none !important;
-      .el-icon-close:hover {
-        background: transparent;
-      }
-    }
-    .el-tabs__nav-next,
-    .el-tabs__nav-prev {
-      line-height: 32px;
-    }
-    // .el-tabs__item.is-active {
-    //   @include font-color(#fff);
-    //   @include tool-bar-color();
-    // }
-    .el-tabs__nav {
-      border: none;
-    }
-  }
-  .tags-close-box {
-    box-sizing: border-box;
-    padding-top: 1px;
-    text-align: center;
-
+  padding: 6px 19px 6px 10px;
+  .tags-item {
     line-height: 30px;
     // box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
     z-index: 10;
     cursor: pointer;
-    .drop-icon {
-      font-size: 18px;
-      font-weight: bolder;
-      transition: all 0.2s ease-in-out;
-      &:hover {
-        // @include sec-font-color();
-        // transform: rotate(90deg);
-      }
-    }
+    margin-right: 8px;
   }
 }
 </style>

@@ -45,21 +45,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed } from "vue"
-import { useStore } from "vuex"
-import bus from "@/utils/bus"
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
+import bus from '@/utils/bus'
 
 const store = useStore()
 const isCollapse = ref<boolean>(false)
 
 const routeArr = computed(() => store.getters.routes)
 
-const props = withDefaults(defineProps<{ menuMode?: "horizontal" | "vertical" }>(), {
-  menuMode: "vertical",
+const props = withDefaults(defineProps<{ menuMode?: 'horizontal' | 'vertical' }>(), {
+  menuMode: 'vertical',
 })
 
-bus.on("swithCollapse", (bool: boolean) => {
-  props.menuMode === "vertical" ? (isCollapse.value = bool) : ""
+bus.on('swithCollapse', (bool: boolean) => {
+  props.menuMode === 'vertical' ? (isCollapse.value = bool) : ''
 })
 </script>
 

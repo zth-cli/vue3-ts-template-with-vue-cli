@@ -6,7 +6,7 @@
 const debounce = (el: HTMLElement, binding: { arg: any; value: () => void }) => {
   const deTime = binding.arg ? binding.arg : 1000
   let timer
-  el.addEventListener("click", () => {
+  el.addEventListener('click', () => {
     if (timer) {
       clearTimeout(timer)
     }

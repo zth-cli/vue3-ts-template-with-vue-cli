@@ -31,7 +31,7 @@
               type="text"
               :icon="!switchData[item.name] ? 'arrow-down' : 'arrow-up'"
               @click="switchData[item.name] = !switchData[item.name]"
-              >{{ !switchData[item.name] ? "展开" : "收起" }}</el-button
+              >{{ !switchData[item.name] ? '展开' : '收起' }}</el-button
             >
           </div>
         </section>
@@ -52,10 +52,10 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, watch, nextTick, toRaw } from "vue"
-import { ConditionBar } from "@/components/CurdViews/ConditionBar"
-import { toArray } from "@/utils"
-import { IformItem } from "../type"
+import { reactive, ref, watch, nextTick, toRaw } from 'vue'
+import { ConditionBar } from '@/components/CurdViews/ConditionBar'
+import { toArray } from '@/utils'
+import { IformItem } from '../type'
 
 const categorys = ref(null)
 let anchor = reactive([])
@@ -63,7 +63,7 @@ const formData: { [key: string]: any } = reactive({})
 const switchData = reactive({})
 const orignalFromData = {}
 
-const emit = defineEmits(["params-change", "query"])
+const emit = defineEmits(['params-change', 'query'])
 interface Props {
   options: Array<IformItem>
   initParams?: any // 初始参数集合,优先级比default高
@@ -73,16 +73,16 @@ const props = withDefaults(defineProps<Props>(), {
   initParams: {},
   options: () => [
     {
-      name: "area",
-      label: "接入电网",
-      options: [{ label: "省调公司", value: "1232213213" }],
+      name: 'area',
+      label: '接入电网',
+      options: [{ label: '省调公司', value: '1232213213' }],
     },
   ],
 })
 const initFromData = () => {
   anchor = []
   props.options.forEach((item, index) => {
-    if (item.type === "flow" || !item.type) {
+    if (item.type === 'flow' || !item.type) {
       if (!item.disabled) {
         const defaultValue = item.default ? toArray(item.default) : []
         formData[item.name] = props.initParams[item.name] ? toArray(props.initParams[item.name]) : defaultValue
@@ -120,7 +120,7 @@ const setValue = (item: IformItem, val: any) => {
   } else {
     formData[item.name] = [val]
   }
-  emit("params-change", { formData })
+  emit('params-change', { formData })
 }
 const setActive = (item: IformItem, index: number, i: number) => {
   // if (!item.multiple) {
@@ -130,7 +130,7 @@ const setActive = (item: IformItem, index: number, i: number) => {
   //     }
   //   })
   // }
-  const id = String(index) + "~" + String(i)
+  const id = String(index) + '~' + String(i)
   if (props.multiple) {
     if (anchor.indexOf(id) < 0) {
       anchor.push(id)
@@ -141,10 +141,10 @@ const setActive = (item: IformItem, index: number, i: number) => {
   } else {
     let ind = null
     const isExiste = anchor.some((item, i) => {
-      if (Number(item.split("~")[0]) === index) {
+      if (Number(item.split('~')[0]) === index) {
         ind = i
       }
-      return Number(item.split("~")[0]) === index
+      return Number(item.split('~')[0]) === index
     })
     isExiste ? (anchor[ind] = id) : anchor.push(id)
   }
@@ -152,13 +152,13 @@ const setActive = (item: IformItem, index: number, i: number) => {
 }
 const resetItemActive = (item: { name: string | number }, index: any) => {
   const arr = anchor.filter((ele, indx) => {
-    return ele.split("~")[0] !== String(index)
+    return ele.split('~')[0] !== String(index)
   })
   anchor = arr
   formData[item.name] = []
 }
 const isActive = (index: any, i: any) => {
-  return anchor.includes(String(index) + "~" + String(i))
+  return anchor.includes(String(index) + '~' + String(i))
 }
 
 const resetData = () => {
@@ -171,10 +171,10 @@ const resetData = () => {
 // 输入框
 const paramsChange = (params: any) => {
   const formDatas = Object.assign({}, params, formData)
-  emit("params-change", formDatas)
+  emit('params-change', formDatas)
 }
 const query = (params: any) => {
-  emit("query", { ...params, ...toRaw(formData) })
+  emit('query', { ...params, ...toRaw(formData) })
 }
 
 // initFromData()

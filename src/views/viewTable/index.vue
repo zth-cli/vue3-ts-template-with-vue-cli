@@ -20,56 +20,56 @@
 </template>
 
 <script lang="ts">
-import CurdView from "@/components/CurdViews/index.vue"
-import { IformItem, ItableProps, ItreeProps } from "@/components/CurdViews/type"
-import { defineComponent } from "vue"
+import CurdView from '@/components/CurdViews/index.vue'
+import { IformItem, ItableProps, ItreeProps } from '@/components/CurdViews/type'
+import { defineComponent } from 'vue'
 const tableOptions: ItableProps = {
   pageSize: 20,
   showPanelTool: true,
   params: {}, // params的改变都会触发，表格的重新查询
-  dataUrl: "/orderlyElectricityConsumption/XDAnalysis/getXDUserReport",
+  dataUrl: '/orderlyElectricityConsumption/XDAnalysis/getXDUserReport',
   columns: [
-    { type: "selection", width: 70, align: "center" },
-    { type: "index", label: "序号", align: "center", width: 80 },
+    { type: 'selection', width: 70, align: 'center' },
+    { type: 'index', label: '序号', align: 'center', width: 80 },
     {
-      label: "用户信息",
-      align: "center",
-      headerAlign: "center",
-      prop: "creator",
+      label: '用户信息',
+      align: 'center',
+      headerAlign: 'center',
+      prop: 'creator',
       childrens: [
-        { prop: "creator", label: "角色名", align: "center", width: 180 },
-        { prop: "creator", label: "用户年龄", align: "center" },
-        { label: "用户", slot: "proflies", align: "center" },
-        { label: "操作", slot: "operation", width: 150, align: "center" },
+        { prop: 'creator', label: '角色名', align: 'center', width: 180 },
+        { prop: 'creator', label: '用户年龄', align: 'center' },
+        { label: '用户', slot: 'proflies', align: 'center' },
+        { label: '操作', slot: 'operation', width: 150, align: 'center' },
       ],
     },
-    { label: "Action", slot: "action", width: 150, align: "center" },
+    { label: 'Action', slot: 'action', width: 150, align: 'center' },
   ],
 }
 const fromOptions: IformItem[] = [
-  { name: "description", label: "角色描述", span: 6, type: "text" },
+  { name: 'description', label: '角色描述', span: 6, type: 'text' },
   {
-    name: "occurTime",
-    label: "日期",
+    name: 'occurTime',
+    label: '日期',
     span: 6,
-    type: "date",
-    format: "yyyy-MM-dd",
+    type: 'date',
+    format: 'yyyy-MM-dd',
   },
   {
-    name: "bvId",
-    label: "电压等级",
-    type: "select",
-    prop: { label: "bvName", value: "bvId" },
-    options: [{ bvId: 1, bvName: "220kV" }],
+    name: 'bvId',
+    label: '电压等级',
+    type: 'select',
+    prop: { label: 'bvName', value: 'bvId' },
+    options: [{ bvId: 1, bvName: '220kV' }],
   },
 ]
 const treeOptions: ItreeProps = {
-  dataUrl: "/esdaw0",
+  dataUrl: '/esdaw0',
   search: true,
-  treeProps: { children: "children", label: "label", disable: "false" },
+  treeProps: { children: 'children', label: 'label', disable: 'false' },
 }
 export default defineComponent({
-  name: "ViewTable",
+  name: 'ViewTable',
   components: { CurdView },
   data() {
     return {

@@ -98,15 +98,15 @@
                   :type="switchIndex === i ? 'danger' : 'primary'"
                   @click="switchDate(item.name, el, item.dateTypeParamName, i)"
                   >{{
-                    el.type === "date"
-                      ? "日"
-                      : el.type === "month"
-                      ? "月"
-                      : el.type === "year"
-                      ? "年"
-                      : el.type === "dates"
-                      ? "多日"
-                      : "时间"
+                    el.type === 'date'
+                      ? '日'
+                      : el.type === 'month'
+                      ? '月'
+                      : el.type === 'year'
+                      ? '年'
+                      : el.type === 'dates'
+                      ? '多日'
+                      : '时间'
                   }}</el-button
                 >
                 <el-date-picker
@@ -143,7 +143,7 @@
         <slot name="rtool"></slot>
       </div>
       <div v-if="ellipsis" class="ellipsis_icon a" @click="expend = !expend">
-        <span>{{ expend ? "隐藏" : "展开" }}</span>
+        <span>{{ expend ? '隐藏' : '展开' }}</span>
         <i :class="[expend ? 'el-icon-arrow-up' : 'el-icon-arrow-down']"></i>
       </div>
       <div class="btns">
@@ -158,15 +158,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch } from "vue"
-import { IformItem } from "../type"
-import { allowType } from "./enum/allowType"
-import { usePlaceholder, useTimeSwitch, useDefaultData, useQuery, useMediaQuery } from "./hook"
+import { ref, onMounted, watch } from 'vue'
+import { IformItem } from '../type'
+import { allowType } from './enum/allowType'
+import { usePlaceholder, useTimeSwitch, useDefaultData, useQuery, useMediaQuery } from './hook'
 
 const expend = ref<boolean>(false)
 const tools = ref(null)
 const itemRefs = ref<Array<HTMLElement | null>>([])
-const emit = defineEmits(["query", "resize", "params-change", "reset-data"])
+const emit = defineEmits(['query', 'resize', 'params-change', 'reset-data'])
 
 interface IconProps {
   mode?: string
@@ -175,9 +175,9 @@ interface IconProps {
   width?: string
 }
 const props = withDefaults(defineProps<IconProps>(), {
-  mode: "normal",
-  toolAlign: "left",
-  width: "200px",
+  mode: 'normal',
+  toolAlign: 'left',
+  width: '200px',
 })
 
 const { fromData, typeArr, resetData } = useDefaultData(props) // 初始化默认值
@@ -197,12 +197,12 @@ const debounce = (fn: () => void, wait: number) => {
 
 const flowBarResetData = () => {
   resetData()
-  emit("reset-data", fromData)
+  emit('reset-data', fromData)
 }
 
 onMounted(() => {
   toolsMediaQuery()
-  window.addEventListener("resize", debounce(toolsMediaQuery, 500))
+  window.addEventListener('resize', debounce(toolsMediaQuery, 500))
 })
 
 watch(fromData, (params) => {
@@ -210,12 +210,12 @@ watch(fromData, (params) => {
   for (const key in params) {
     if (params[key] instanceof Array) {
       // 对value为Array类型的进行字符串拼接
-      fromData[key] = params[key].join(",")
+      fromData[key] = params[key].join(',')
     } else {
       fromData[key] = params[key]
     }
   }
-  emit("params-change", fromData)
+  emit('params-change', fromData)
 })
 </script>
 <style lang="scss">

@@ -63,13 +63,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted, onBeforeUnmount, defineComponent } from "vue"
+import { ref, computed, onMounted, onBeforeUnmount, defineComponent } from 'vue'
 
 interface Itoasts {
   title: string
   closeIcon?: boolean
   message?: string
-  type?: "success" | "warning" | "info" | "error" | "custom" | "img"
+  type?: 'success' | 'warning' | 'info' | 'error' | 'custom' | 'img'
   confirmText?: string
   customIcon?: string
   customIconBackground?: string
@@ -101,10 +101,10 @@ const toastStyle = computed(() => {
 
 // 倒计时
 const countDown = computed(() => {
-  return "2 seconds ago"
+  return '2 seconds ago'
 })
 
-const id = ref("")
+const id = ref('')
 
 // 离开以后
 function afterLeave() {

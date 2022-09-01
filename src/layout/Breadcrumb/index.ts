@@ -1,3 +1,3 @@
-import Breadcrumb from "./index.vue"
+import Breadcrumb from './index.vue'
 
 export { Breadcrumb }

@@ -1,6 +1,6 @@
-import { reactive, Ref, ref, unref } from "vue"
-import { http } from "@/utils/http"
-import { defaultTableData } from "../enums"
+import { reactive, Ref, ref, unref } from 'vue'
+import { http } from '@/utils/http'
+import { defaultTableData } from '../enums'
 export function useTableFetchData(
   props,
   emit: (arg0: string, arg1: any[] | Ref<any[]>) => void,
@@ -24,7 +24,7 @@ export function useTableFetchData(
     timeout = setTimeout(() => {
       selection.value = []
       tableData.value = []
-      emit("selection-change", [])
+      emit('selection-change', [])
       loading.value = true
       const params = props.showPage
         ? Object.assign({}, JSON.parse(JSON.stringify(pageParam)), props.params, {
@@ -56,7 +56,7 @@ export function useTableFetchData(
               })
             }
             tableData.value = data
-            emit("getTableData", unref(tableData))
+            emit('getTableData', unref(tableData))
           }
         })
         .catch(() => {

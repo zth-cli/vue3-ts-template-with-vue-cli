@@ -18,18 +18,18 @@
 </template>
 
 <script lang="ts" setup>
-import { Menu } from "./Menu"
-import { Header } from "./Header"
-import { MainView } from "./Main"
-import { Tags } from "./TagsView"
-import { useStore } from "vuex"
-import { computed } from "vue"
+import { Menu } from './Menu'
+import { Header } from './Header'
+import { MainView } from './Main'
+import { Tags } from './TagsView'
+import { useStore } from 'vuex'
+import { computed } from 'vue'
 
 const store = useStore()
 const menuMode = computed(() => store.getters.menuMode)
 const showTags = computed(() => store.getters.tagsBar)
-const mrt = computed(() => (!showTags.value ? "12px" : "0px"))
-const viewHeight = computed(() => (!showTags.value ? "100%" : "calc(100% - 44px)"))
+const mrt = computed(() => (!showTags.value ? '12px' : '0px'))
+const viewHeight = computed(() => (!showTags.value ? '100%' : 'calc(100% - 44px)'))
 </script>
 <style lang="scss">
 .layout {
@@ -46,9 +46,9 @@ const viewHeight = computed(() => (!showTags.value ? "100%" : "calc(100% - 44px)
     padding: 0;
     .zth-view {
       box-sizing: border-box;
-      padding-top: v-bind("mrt");
+      padding-top: v-bind('mrt');
       width: 100%;
-      height: v-bind("viewHeight");
+      height: v-bind('viewHeight');
       overflow: hidden;
     }
   }

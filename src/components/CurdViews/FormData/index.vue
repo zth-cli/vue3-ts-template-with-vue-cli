@@ -153,13 +153,13 @@
 </template>
 
 <script lang="ts" setup>
-import { http } from "@/utils/http"
-import { EditTable } from "../EditTable"
-import { ref, toRaw, watch } from "vue"
-import { usePlaceholder } from "./hook/usePlaceholder"
-import { useDefaultData } from "./hook/useDefaultData"
-import { ElMessage } from "element-plus"
-import qs from "qs"
+import { http } from '@/utils/http'
+import { EditTable } from '../EditTable'
+import { ref, toRaw, watch } from 'vue'
+import { usePlaceholder } from './hook/usePlaceholder'
+import { useDefaultData } from './hook/useDefaultData'
+import { ElMessage } from 'element-plus'
+import qs from 'qs'
 const ruleForm = ref(null)
 const fromItems = ref<Array<any>>([])
 
@@ -173,17 +173,17 @@ interface IformProps {
   rules?: { [x: string]: any }
   beforeSubmit?: Function
   placeholderLabel?: boolean
-  contentType?: "json" | "form-data"
+  contentType?: 'json' | 'form-data'
 }
 const props = withDefaults(defineProps<IformProps>(), {
   formItem: () => [],
   placeholderLabel: false,
-  contentType: "json",
+  contentType: 'json',
   beforeSubmit: function (formData) {
     // 提交前,对value为Array类型的进行字符串拼接
     for (const key in formData) {
       if (formData[key] instanceof Array) {
-        formData[key] = formData[key].join(",")
+        formData[key] = formData[key].join(',')
       }
     }
     return formData
@@ -191,7 +191,7 @@ const props = withDefaults(defineProps<IformProps>(), {
 })
 
 // 自定义事件
-const emit = defineEmits(["submit", "from-change"])
+const emit = defineEmits(['submit', 'from-change'])
 
 // 初始化赋值
 fromItems.value = toRaw(props.formItem)
@@ -212,23 +212,23 @@ const submitForm = async (formEl) => {
         }
       }
       formDatas = await props.beforeSubmit(formDatas)
-      if (props.postUrl && props.postUrl !== "simulationdata") {
-        const params = props.contentType === "json" ? formDatas : qs.stringify(formDatas)
+      if (props.postUrl && props.postUrl !== 'simulationdata') {
+        const params = props.contentType === 'json' ? formDatas : qs.stringify(formDatas)
         const headers =
-          props.contentType === "form-data" ? { headers: { "content-type": "application/x-www-form-urlencoded" } } : {}
-        http.request<{ data: any; code: number }>("post", props.postUrl, params, headers).then((res) => {
+          props.contentType === 'form-data' ? { headers: { 'content-type': 'application/x-www-form-urlencoded' } } : {}
+        http.request<{ data: any; code: number }>('post', props.postUrl, params, headers).then((res) => {
           if (res.code === 1) {
-            emit("submit", formDatas, res.data)
-            ElMessage.success("已提交")
+            emit('submit', formDatas, res.data)
+            ElMessage.success('已提交')
           } else {
-            ElMessage.error("提交异常")
+            ElMessage.error('提交异常')
           }
         })
       } else {
-        emit("submit", formDatas)
+        emit('submit', formDatas)
       }
     } else {
-      console.log("error submit!", fields)
+      console.log('error submit!', fields)
     }
   })
 }
@@ -244,7 +244,7 @@ const resetForm = (formEl) => {
 watch(
   () => formData,
   (val) => {
-    emit("from-change", val)
+    emit('from-change', val)
   },
   { deep: true }
 )

@@ -20,7 +20,7 @@
           </div>
           <el-button v-debounce="loginajax" type="primary" :loading="isLoging" class="login_btn">登录</el-button>
           <p class="login-tips">
-            <span @click="loginByPwd = !loginByPwd">{{ loginByPwd ? "短信登录" : "密码登录" }}</span>
+            <span @click="loginByPwd = !loginByPwd">{{ loginByPwd ? '短信登录' : '密码登录' }}</span>
             <span>没有账号? 立即注册</span>
           </p>
         </div>
@@ -32,14 +32,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, Ref, computed, getCurrentInstance } from "vue"
-import { useStore } from "vuex"
-import { useRouter } from "vue-router"
-import { setStorge } from "@/utils/auth"
+import { ref, Ref, computed, getCurrentInstance } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { setStorge } from '@/utils/auth'
 const internalInstance = getCurrentInstance()
-const slogan = "融合平台"
-const mobile: Ref<string> = ref("")
-const passwords: Ref<string> = ref("")
+const slogan = '融合平台'
+const mobile: Ref<string> = ref('')
+const passwords: Ref<string> = ref('')
 const isLoging: Ref<boolean> = ref(false)
 const loginByPwd: Ref<boolean> = ref(true)
 const store = useStore()
@@ -48,10 +48,10 @@ const loginajax = () => {
   getUserMenu()
 }
 const getUserMenu = () => {
-  store.dispatch("GetUserMenu").then((routes) => {
-    setStorge("token", "2321314dqdqf21")
+  store.dispatch('GetUserMenu').then((routes) => {
+    setStorge('token', '2321314dqdqf21')
     console.log(routes)
-    router.replace("/")
+    router.replace('/')
   })
 }
 const isValidPhone = computed(() => {

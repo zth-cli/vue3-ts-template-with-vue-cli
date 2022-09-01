@@ -10,12 +10,12 @@
  */
 export function getUrlParamsToObj(baseUrl?: string) {
   const url = baseUrl ? baseUrl : location.search
-  const params = url.split("?")[1] //获取url中"?*"符后的字串
+  const params = url.split('?')[1] //获取url中"?*"符后的字串
   const theRequest: { [x: string]: any } = {}
   if (params) {
-    const strs = params.split("&")
+    const strs = params.split('&')
     for (let i = 0; i < strs.length; i++) {
-      theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1])
+      theRequest[strs[i].split('=')[0]] = decodeURIComponent(strs[i].split('=')[1])
     }
   }
   return theRequest
@@ -32,16 +32,16 @@ export function getUrlParamsToObj(baseUrl?: string) {
  *  ==>www.baidu.com?a=3&b=4
  */
 export function setObjToUrlParams(baseUrl: string, obj: object): string {
-  let parameters = ""
-  let url = ""
+  let parameters = ''
+  let url = ''
   for (const key in obj) {
-    parameters += key + "=" + encodeURIComponent(obj[key]) + "&"
+    parameters += key + '=' + encodeURIComponent(obj[key]) + '&'
   }
-  parameters = parameters.replace(/&$/, "")
+  parameters = parameters.replace(/&$/, '')
   if (/\?$/.test(baseUrl)) {
     url = baseUrl + parameters
   } else {
-    url = baseUrl.replace(/\/?$/, "?") + parameters
+    url = baseUrl.replace(/\/?$/, '?') + parameters
   }
   return url
 }

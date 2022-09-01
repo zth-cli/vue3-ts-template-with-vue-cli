@@ -219,7 +219,7 @@ function renderContent(h, { node }) {
 </script>
 <style lang="scss">
 .curd_tree_wrap {
-  background-color: #fff;
+  background-color: var(--content-background);
   height: 100%;
   position: relative;
   border-radius: 0 4px 4px 0;

@@ -1,4 +1,4 @@
-import { ref, Ref, computed } from "vue"
+import { ref, Ref, computed } from 'vue'
 
 export function useCollapse() {
   const collapse: Ref<boolean> = ref(false)

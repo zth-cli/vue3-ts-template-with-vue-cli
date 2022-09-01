@@ -6,4 +6,4 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue3-ts-template-with-webpack\types\env.d.ts
  */
-declare module "qs"
+declare module 'qs'

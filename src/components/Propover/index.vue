@@ -12,8 +12,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue"
-const emit = defineEmits(["on-confirm", "on-cancel"]) // 事件
+import { ref } from 'vue'
+const emit = defineEmits(['on-confirm', 'on-cancel']) // 事件
 const props = withDefaults(
   defineProps<{
     content?: string
@@ -21,18 +21,18 @@ const props = withDefaults(
     size?: string
   }>(),
   {
-    content: "确定删除吗？",
-    subContent: "删除",
-    size: "samll",
+    content: '确定删除吗？',
+    subContent: '删除',
+    size: 'samll',
   }
 )
 const visible = ref(false)
 const confirmBtn = () => {
   visible.value = false
-  emit("on-confirm")
+  emit('on-confirm')
 }
 const cancelBtn = () => {
   visible.value = false
-  emit("on-cancel")
+  emit('on-cancel')
 }
 </script>

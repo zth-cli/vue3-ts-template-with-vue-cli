@@ -1,10 +1,10 @@
 <script lang="ts">
-import { defineComponent, onBeforeMount } from "vue"
-import { useRoute, useRouter } from "vue-router"
+import { defineComponent, onBeforeMount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 // 重定向然后返回到重定向之前页面，实现页面重载
 export default defineComponent({
-  name: "Redirect",
+  name: 'Redirect',
   setup() {
     const route = useRoute()
     const router = useRouter()
@@ -12,7 +12,7 @@ export default defineComponent({
       const { params, query } = route
       const { path } = params
       router.replace({
-        path: "/" + (Array.isArray(path) ? path.join("/") : path),
+        path: '/' + (Array.isArray(path) ? path.join('/') : path),
         query,
       })
     })

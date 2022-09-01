@@ -1,8 +1,8 @@
-import { InjectionKey } from "vue"
-import { createStore, Store } from "vuex"
-import menuPermission from "./modules/permissionMenus"
-import appSettings from "./modules/appSetting"
-import getters from "./getters"
+import { InjectionKey } from 'vue'
+import { createStore, Store } from 'vuex'
+import menuPermission from './modules/permissionMenus'
+import appSettings from './modules/appSetting'
+import getters from './getters'
 
 export interface State {
   count: number
@@ -21,7 +21,7 @@ export const store = createStore({
   },
   actions: {
     increment(context) {
-      context.commit("increment")
+      context.commit('increment')
     },
   },
   modules: {

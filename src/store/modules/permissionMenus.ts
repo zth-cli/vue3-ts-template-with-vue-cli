@@ -1,15 +1,15 @@
-import { SET_USERMENU } from "../mutation-types"
-import router from "@/router"
-import addRouter from "@/utils/getRoutes"
-import { getAsyncRoutes } from "@/api"
-import Main from "@/layout/index.vue"
-import routerArr from "@/mock/routerArr"
+import { SET_USERMENU } from '../mutation-types'
+import router from '@/router'
+import addRouter from '@/utils/getRoutes'
+import { getAsyncRoutes } from '@/api'
+import Main from '@/layout/index.vue'
+import routerArr from '@/mock/routerArr'
 interface State {
   routes: []
 }
 const Menus = {
   state: (): State => ({
-    routes: JSON.parse(localStorage.getItem("menu")) || [],
+    routes: JSON.parse(localStorage.getItem('menu')) || [],
   }),
   mutations: {
     [SET_USERMENU]: (state: { routes: any }, menu: any) => {
@@ -25,8 +25,8 @@ const Menus = {
         const routes = addRouter(asyncRoutes)
         console.log(routes)
         ;(router.options.routes as Array<any>).splice(0, 1, {
-          path: "/",
-          name: "Main",
+          path: '/',
+          name: 'Main',
           component: Main,
           redirect: routes[0].path,
           children: routes,
@@ -34,14 +34,14 @@ const Menus = {
         router.options.routes.concat(
           ...[
             {
-              component: () => import("../../views/Error/404.vue"),
-              meta: { title: "404", isCache: false, requiresAuth: true },
-              name: "404error",
-              path: "/404error",
+              component: () => import('../../views/Error/404.vue'),
+              meta: { title: '404', isCache: false, requiresAuth: true },
+              name: '404error',
+              path: '/404error',
             },
             {
-              path: "/:path(.*)*",
-              redirect: "/404error",
+              path: '/:path(.*)*',
+              redirect: '/404error',
             },
           ]
         )

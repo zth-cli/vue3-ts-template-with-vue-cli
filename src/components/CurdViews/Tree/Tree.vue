@@ -22,7 +22,7 @@
           <template #default="{ node, data }">
             <slot v-bind="{ node, data }">
               <i class="el-icon-folder"> </i>
-              <span>{{ data[treeProps["label"]] }}</span>
+              <span>{{ data[treeProps['label']] }}</span>
             </slot>
           </template>
         </el-tree>
@@ -32,15 +32,15 @@
 </template>
 
 <script lang="ts" setup>
-import { http } from "@/utils/http"
-import type Node from "element-plus/es/components/tree/src/model/node"
-import { ref, watch, h, VNode } from "vue"
-import { defaultTreeData, defaultProps } from "./enums"
+import { http } from '@/utils/http'
+import type Node from 'element-plus/es/components/tree/src/model/node'
+import { ref, watch, h, VNode } from 'vue'
+import { defaultTreeData, defaultProps } from './enums'
 
 const loading = ref<boolean>(false)
 const treeData = ref<Array<any>>(defaultTreeData)
 const toggle = ref<boolean>(true)
-const filterText = ref<string>("")
+const filterText = ref<string>('')
 const tree = ref(null)
 
 interface ItreeProp {
@@ -51,12 +51,12 @@ interface ItreeProp {
   defaultExpandAll?: boolean
   expandOnclickNode?: boolean
   resDataName?: string
-  renderContent?: (node: Node, data: any, store: Node["store"]) => VNode
+  renderContent?: (node: Node, data: any, store: Node['store']) => VNode
 }
 
 const props = withDefaults(defineProps<ItreeProp>(), { ...defaultProps })
 
-const emit = defineEmits(["changeSatus", "nodeClick"])
+const emit = defineEmits(['changeSatus', 'nodeClick'])
 
 const queryData = () => {
   if (props.dataUrl && !loading.value) {
@@ -77,7 +77,7 @@ const queryData = () => {
 }
 const changeSatus = () => {
   toggle.value = !toggle.value
-  emit("changeSatus", toggle.value) // 触发自定义事件
+  emit('changeSatus', toggle.value) // 触发自定义事件
 }
 const filterNode = (value: any, data: { label: string | any[] }) => {
   if (!value) {
@@ -86,7 +86,7 @@ const filterNode = (value: any, data: { label: string | any[] }) => {
   return data[props.treeProps.label].indexOf(value) !== -1
 }
 const nodeClick = (data: any, node: any) => {
-  emit("nodeClick", { data, node })
+  emit('nodeClick', { data, node })
 }
 // const renderContent = (h, { node, data, store }): VNode => {
 //   return h(
@@ -122,7 +122,7 @@ watch(filterText, (neeVal) => {
 </script>
 <style lang="scss">
 .curd_tree_wrap {
-  // @include content-background();
+  background-color: var(--content-background);
   height: 100%;
   position: relative;
   border-radius: 0 4px 4px 0;

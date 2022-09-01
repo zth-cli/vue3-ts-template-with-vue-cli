@@ -1,15 +1,15 @@
 <script lang="ts">
-import { ElTable } from "element-plus/es"
-import "element-plus/es/components/table/style/css"
-import { h, toRefs, defineComponent, ref, watch } from "vue"
-import { defaultProps } from "./enums"
-import useTableRender from "./hook/useTableRender"
+import { ElTable } from 'element-plus/es'
+import 'element-plus/es/components/table/style/css'
+import { h, toRefs, defineComponent, ref, watch } from 'vue'
+import { defaultProps } from './enums'
+import useTableRender from './hook/useTableRender'
 
 export default defineComponent({
-  name: "DataTable",
+  name: 'DataTable',
   props: defaultProps,
 
-  emits: ["row-click", "row-dblclick", "selection-change", "current-change", "header-click"],
+  emits: ['row-click', 'row-dblclick', 'selection-change', 'current-change', 'header-click'],
   setup(props, { emit, slots, expose }) {
     const tableInstance = ref(null)
     let tableColumns = useTableRender(props, slots)
@@ -59,22 +59,22 @@ export default defineComponent({
           spanMethod: props.spanMethod,
           stripe: props.stripe,
           style: {
-            width: "100%",
+            width: '100%',
           },
           onRowClick: (row: any) => {
-            emit("row-click", row)
+            emit('row-click', row)
           },
           onRowDblclick: (row: any) => {
-            emit("row-dblclick", row)
+            emit('row-dblclick', row)
           },
           onSelectionChange: (selection: any[]) => {
-            emit("selection-change", selection)
+            emit('selection-change', selection)
           },
           onCurrentChange: (row: any) => {
-            emit("current-change", row)
+            emit('current-change', row)
           },
           onHeaderClick: (column: any, event: Event) => {
-            emit("header-click", { column, event })
+            emit('header-click', { column, event })
           },
         },
         {

@@ -24,12 +24,12 @@
 </template>
 
 <script lang="ts" setup>
-import { warn } from "@/utils/log"
-import { downloadByUrl } from "@/utils/downloadFile"
-import { Ref, ref, useAttrs, getCurrentInstance, onMounted } from "vue"
-import { useRequest } from "@/hooks/useRequest"
-import { useDebounce } from "@/hooks/useDebounce"
-import { getAsyncRoutes } from "@/api"
+import { warn } from '@/utils/log'
+import { downloadByUrl } from '@/utils/downloadFile'
+import { Ref, ref, useAttrs, getCurrentInstance, onMounted } from 'vue'
+import { useRequest } from '@/hooks/useRequest'
+import { useDebounce } from '@/hooks/useDebounce'
+import { getAsyncRoutes } from '@/api'
 
 const { loading, error, result, fetchResource } = useRequest(getAsyncRoutes)
 
@@ -44,11 +44,11 @@ onMounted(() => {
   })
 })
 // 定义ref响应式变量
-const title: Ref<string> = ref("home page")
+const title: Ref<string> = ref('home page')
 
 // 定义常量(非响应式),可直接在模板使用
 const theme = {
-  color: "red",
+  color: 'red',
 }
 
 // 定义props
@@ -58,13 +58,13 @@ interface Props {
 }
 // defineProps编译器宏(处理过程一同被编译掉)
 const props = withDefaults(defineProps<Props>(), {
-  name: "Vue3",
+  name: 'Vue3',
 })
 
 // 自定义事件
 const emits = defineEmits<{
-  (e: "change", id: number): void
-  (e: "update", value: string): void
+  (e: 'change', id: number): void
+  (e: 'update', value: string): void
 }>()
 
 // 使用useAttrs(),useSlots()
@@ -73,15 +73,15 @@ console.log(attrs?.id) // 父组件传过来的非props定义的属性
 
 // 函数方法
 const clickHandle = () => {
-  emits("change", 1)
+  emits('change', 1)
 }
 
 const instance = getCurrentInstance()
 const clickHandles = () => {
   instance.appContext.config.globalProperties.$Toast({
-    type: "info",
-    title: "这是一句标题",
-    message: "mount函数的主要逻辑。",
+    type: 'info',
+    title: '这是一句标题',
+    message: 'mount函数的主要逻辑。',
   })
 }
 
@@ -93,6 +93,6 @@ defineExpose({
 </script>
 <style>
 h1 {
-  color: v-bind("theme.color");
+  color: v-bind('theme.color');
 }
 </style>

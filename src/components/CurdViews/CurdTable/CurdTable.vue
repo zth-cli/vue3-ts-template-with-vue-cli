@@ -114,11 +114,11 @@
 
 <script lang="ts" setup>
 /*global Icolumns*/
-import DataTable from "@/components/CurdViews/DataTable/DataTable.vue"
-import { emits, defaulltProps } from "./enums"
-import { useTableSlot, useTableHeaderSlot, useTableFetchData, useExportTable } from "./hook"
-import { ref, computed, watch, toRaw } from "vue"
-import { Icolumns } from "../type"
+import DataTable from '@/components/CurdViews/DataTable/DataTable.vue'
+import { emits, defaulltProps } from './enums'
+import { useTableSlot, useTableHeaderSlot, useTableFetchData, useExportTable } from './hook'
+import { ref, computed, watch, toRaw } from 'vue'
+import { Icolumns } from '../type'
 const tableView = ref<InstanceType<typeof DataTable>>(null)
 
 const props = withDefaults(defineProps<ItableProp>(), { ...defaulltProps })
@@ -147,28 +147,28 @@ const changePageSize = (limit: number) => {
   queryData()
 }
 const rowClick = (row: any) => {
-  emit("row-click", row)
+  emit('row-click', row)
 }
 const rowDblclick = (row: any) => {
-  emit("row-dblclick", row)
+  emit('row-dblclick', row)
 }
 const selectionChange = (rows: any) => {
   selection.value = rows
-  emit("selection-change", selection.value)
+  emit('selection-change', selection.value)
 }
 const handleCurrentChange = (row: any) => {
-  emit("current-change", row)
+  emit('current-change', row)
 }
 const addRow = () => {
-  emit("row-add", true)
+  emit('row-add', true)
 }
 const editRow = () => {
   // 防止修改时，篡改table里的数据
-  emit("row-edit", Object.assign({}, selection.value[0]))
+  emit('row-edit', Object.assign({}, selection.value[0]))
 }
 const deleteRows = () => {
   visible.value = false
-  emit("row-delete", selection.value)
+  emit('row-delete', selection.value)
 }
 const columnsChange = () => {
   const list = []

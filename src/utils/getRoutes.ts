@@ -1,7 +1,7 @@
-import { RouteRecordRaw } from "vue-router"
-import { defineAsyncComponent } from "vue"
-import NotError from "@/views/Error/404.vue"
-import { IrouteItem } from "types/globals"
+import { RouteRecordRaw } from 'vue-router'
+import { defineAsyncComponent } from 'vue'
+import NotError from '@/views/Error/404.vue'
+import { IrouteItem } from 'types/globals'
 
 const addRoutes: Array<RouteRecordRaw> = []
 function addRouter(routeArr: Array<IrouteItem>): RouteConfig[] {
@@ -20,7 +20,7 @@ function addRouter(routeArr: Array<IrouteItem>): RouteConfig[] {
         // component: lazyLoad(await import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`)),
         // component: lazyLoad(item.componentPath),
         meta: {
-          frameSrc: item.frameSrc ? item.frameSrc : "",
+          frameSrc: item.frameSrc ? item.frameSrc : '',
           parentId: item.parentId,
           rId: item.id,
           title: item.title,

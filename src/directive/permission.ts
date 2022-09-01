@@ -1,4 +1,4 @@
-import { ObjectDirective } from "vue"
+import { ObjectDirective } from 'vue'
 
 // 权限到按钮,v-permission="{ action: ['admin'], effect: 'disabled' }"
 
@@ -12,10 +12,10 @@ const permission: ObjectDirective = {
     // 此处应该权限判断
     // eslint-disable-next-line no-constant-condition
     if (false) {
-      if (effect === "disabled") {
+      if (effect === 'disabled') {
         el.disabled = true
-        el.style["disabled"] = "disabled"
-        el.classList.add("n-button--disabled")
+        el.style['disabled'] = 'disabled'
+        el.classList.add('n-button--disabled')
       } else {
         el.remove()
       }

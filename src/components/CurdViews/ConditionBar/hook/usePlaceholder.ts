@@ -1,4 +1,4 @@
-import { IformItem } from "../../type"
+import { IformItem } from '../../type'
 
 export const usePlaceholder = (item: IformItem) => {
   if (item.label) {
@@ -7,27 +7,27 @@ export const usePlaceholder = (item: IformItem) => {
   let result
   if (item.placeholder === null) {
     switch (item.type) {
-      case "text":
-        result = item.disabled || item.readonly ? "" : item.label
+      case 'text':
+        result = item.disabled || item.readonly ? '' : item.label
         break
-      case "popText":
-        result = item.disabled || item.readonly ? "" : "请选择..."
+      case 'popText':
+        result = item.disabled || item.readonly ? '' : '请选择...'
         break
-      case "time":
-        result = item.disabled || item.readonly ? "" : "选择时间"
+      case 'time':
+        result = item.disabled || item.readonly ? '' : '选择时间'
         break
-      case "datetime":
-      case "date":
-        result = item.disabled || item.readonly ? "" : "选择日期"
+      case 'datetime':
+      case 'date':
+        result = item.disabled || item.readonly ? '' : '选择日期'
         break
-      case "datetimerange":
-        result = item.disabled || item.readonly ? "" : "选择时间段"
+      case 'datetimerange':
+        result = item.disabled || item.readonly ? '' : '选择时间段'
         break
-      case "year":
-        result = item.disabled || item.readonly ? "" : "选择年份"
+      case 'year':
+        result = item.disabled || item.readonly ? '' : '选择年份'
         break
       default:
-        result = ""
+        result = ''
         break
     }
   } else {

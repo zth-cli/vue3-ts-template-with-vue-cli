@@ -1,17 +1,17 @@
-import type { EChartsOption } from "echarts"
-import type { Ref } from "vue"
-import { Fn } from "types/globals"
-import { useTimeoutFn, useEventListener } from "@/hooks"
-import { tryOnUnmounted } from "@vueuse/core"
-import { unref, nextTick, watch, computed, ref } from "vue"
-import { useDebounceFn } from "@vueuse/core"
+import type { EChartsOption } from 'echarts'
+import type { Ref } from 'vue'
+import { Fn } from 'types/globals'
+import { useTimeoutFn, useEventListener } from '@/hooks'
+import { tryOnUnmounted } from '@vueuse/core'
+import { unref, nextTick, watch, computed, ref } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
 
-import { echarts } from "@/utils"
+import { echarts } from '@/utils'
 
-export function useECharts(elRef: Ref<HTMLDivElement>, theme: "light" | "dark" | "default" = "light") {
+export function useECharts(elRef: Ref<HTMLDivElement>, theme: 'light' | 'dark' | 'default' = 'light') {
   // const { getDarkMode } = useRootSetting();
   // 主题颜色
-  const getDarkMode = ref("light")
+  const getDarkMode = ref('light')
   let chartInstance: echarts.ECharts | null = null
   const cacheOptions = ref<EChartsOption>({})
   let removeResizeFn: Fn
@@ -22,7 +22,7 @@ export function useECharts(elRef: Ref<HTMLDivElement>, theme: "light" | "dark" |
     // }
     // @ts-ignore
     return {
-      backgroundColor: "transparent",
+      backgroundColor: 'transparent',
       ...cacheOptions.value,
     }
   })
@@ -36,7 +36,7 @@ export function useECharts(elRef: Ref<HTMLDivElement>, theme: "light" | "dark" |
     chartInstance = echarts.init(el, t)
     const { removeEvent } = useEventListener({
       el: window,
-      eventName: "resize",
+      eventName: 'resize',
       listener: resize,
     })
     removeResizeFn = removeEvent
@@ -54,7 +54,7 @@ export function useECharts(elRef: Ref<HTMLDivElement>, theme: "light" | "dark" |
     nextTick(() => {
       useTimeoutFn(() => {
         if (!chartInstance) {
-          initCharts(getDarkMode.value as "default")
+          initCharts(getDarkMode.value as 'default')
 
           if (!chartInstance) {
             return
@@ -75,7 +75,7 @@ export function useECharts(elRef: Ref<HTMLDivElement>, theme: "light" | "dark" |
     (theme) => {
       if (chartInstance) {
         chartInstance.dispose()
-        initCharts(theme as "default")
+        initCharts(theme as 'default')
         setOptions(unref(cacheOptions) as EChartsOption)
       }
     }
@@ -92,7 +92,7 @@ export function useECharts(elRef: Ref<HTMLDivElement>, theme: "light" | "dark" |
 
   function getInstance(): echarts.ECharts | null {
     if (!chartInstance) {
-      initCharts(getDarkMode.value as "default")
+      initCharts(getDarkMode.value as 'default')
     }
     return chartInstance
   }

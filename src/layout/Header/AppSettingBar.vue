@@ -49,47 +49,47 @@
 </template>
 
 <script lang="ts" setup>
-import bus from "@/utils/bus"
-import { reactive, ref, watch } from "vue"
-import { useStore } from "vuex"
+import bus from '@/utils/bus'
+import { reactive, ref, watch } from 'vue'
+import { useStore } from 'vuex'
 
 const store = useStore()
 
 const colors = ref<any[]>([
-  { theme: "theme3", color: "#397373", name: "经典" },
-  { theme: "theme2", color: "#0e9b92", name: "清爽" },
-  { theme: "theme4", color: "#000", name: "暗夜" },
-  { theme: "theme1", color: "#030033", name: "炫酷" },
+  { theme: 'theme3', color: '#397373', name: '经典' },
+  { theme: 'theme2', color: '#0e9b92', name: '清爽' },
+  { theme: 'theme4', color: '#000', name: '暗夜' },
+  { theme: 'theme1', color: '#030033', name: '炫酷' },
 ])
-const themeName = ref<string>(localStorage.getItem("theme") || "theme2")
+const themeName = ref<string>(localStorage.getItem('theme') || 'theme2')
 const layout = reactive({
-  menuMode: localStorage.getItem("menuMode"),
-  tagsBar: localStorage.getItem("tagsBar") === "true",
+  menuMode: localStorage.getItem('menuMode'),
+  tagsBar: localStorage.getItem('tagsBar') === 'true',
 })
 const styles = reactive({
-  height: "calc(100% - 55px)",
-  overflow: "auto",
-  paddingBottom: "53px",
-  position: "static",
+  height: 'calc(100% - 55px)',
+  overflow: 'auto',
+  paddingBottom: '53px',
+  position: 'static',
 })
 const visible = ref<boolean>(false)
 
 const props = withDefaults(defineProps<{ status: boolean }>(), { status: false })
-const emit = defineEmits(["visible-change"])
+const emit = defineEmits(['visible-change'])
 
 const change = () => {
-  emit("visible-change", false)
+  emit('visible-change', false)
 }
 const saveTheme = (key: string, menuMode?: string) => {
-  menuMode ? (layout.menuMode = menuMode) : ""
-  store.dispatch("changeSetting", { key, value: layout[key] })
+  menuMode ? (layout.menuMode = menuMode) : ''
+  store.dispatch('changeSetting', { key, value: layout[key] })
 }
 const changeTheme = (theme: string) => {
   const { VITE_PUBLIC_PATH: publicPath } = process.env
-  document.documentElement.setAttribute("data-theme", theme)
-  document.getElementById("theme").setAttribute("href", `${publicPath}theme/${theme}/index.css`)
-  localStorage.setItem("theme", theme)
-  bus.emit("changMenuColor", theme)
+  document.documentElement.setAttribute('data-theme', theme)
+  document.getElementById('theme').setAttribute('href', `${publicPath}theme/${theme}/index.css`)
+  localStorage.setItem('theme', theme)
+  bus.emit('changMenuColor', theme)
 }
 
 watch(
@@ -140,7 +140,7 @@ watch(
           left: 0;
           width: 33%;
           height: 100%;
-          content: "";
+          content: '';
           z-index: 1;
         }
         &:after {
@@ -149,7 +149,7 @@ watch(
           left: 0;
           width: 100%;
           height: 25%;
-          content: "";
+          content: '';
         }
       }
       .drawer-block-checkbox-item-top {
@@ -160,7 +160,7 @@ watch(
           width: 33%;
           height: 100%;
           background-color: transparent;
-          content: "";
+          content: '';
           z-index: 1;
         }
         &:after {
@@ -169,7 +169,7 @@ watch(
           left: 0;
           width: 100%;
           height: 25%;
-          content: "";
+          content: '';
         }
       }
       .theme-color-block {

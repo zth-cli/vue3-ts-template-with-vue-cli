@@ -1,6 +1,6 @@
-import { createApp, defineComponent, nextTick } from "vue"
+import { createApp, defineComponent, nextTick } from 'vue'
 // 使用 Vue.extend构造组件子类
-const Comp = defineComponent({ name: "Loading", template: "<p>loading</p>" })
+const Comp = defineComponent({ name: 'Loading', template: '<p>loading</p>' })
 const app = createApp(Comp)
 
 // 定义一个名为loading的指令
@@ -11,7 +11,7 @@ const loading = {
    * @param {*} binding 指令传入的信息，包括 {name:'指令名称', value: '指令绑定的值',arg: '指令参数 v-bind:text 对应 text'}
    */
   mounted(el: any, binding: any) {
-    const instance = app.mount(document.createElement("div"))
+    const instance = app.mount(document.createElement('div'))
     el.appendChild(instance.$el)
     el.instance = instance
     nextTick(() => {

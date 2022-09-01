@@ -6,10 +6,10 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue3-ts-template-with-webpack\src\hooks\useParentRoute.ts
  */
-import { IrouteItem } from "types/globals"
-import { ref, computed, watch } from "vue"
-import { useRoute } from "vue-router"
-import { useStore } from "vuex"
+import { IrouteItem } from 'types/globals'
+import { ref, computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 
 // 通过子路ID 寻找父级路由集合
 export function useParentRoute() {

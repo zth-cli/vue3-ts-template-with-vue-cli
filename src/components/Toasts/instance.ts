@@ -1,5 +1,5 @@
-import { createApp, App, ComponentPublicInstance } from "vue"
-import Toasts from "./toasts.vue"
+import { createApp, App, ComponentPublicInstance } from 'vue'
+import Toasts from './toasts.vue'
 
 type publicInstance = ComponentPublicInstance & { id?: string; visible?: boolean }
 const instances: publicInstance[] = []
@@ -8,8 +8,8 @@ let seed = 1
 const toasts = (options) => {
   // 创建父容器
   const id = `toasts_${seed++}`
-  const root: HTMLDivElement = document.createElement("div")
-  root.setAttribute("data-id", id)
+  const root: HTMLDivElement = document.createElement('div')
+  root.setAttribute('data-id', id)
   document.body.appendChild(root)
   const ToastsApp: App = createApp(Toasts, {
     ...options,

@@ -1,4 +1,4 @@
-import { Ref, ref } from "vue"
+import { Ref, ref } from 'vue'
 
 export const useMediaQuery = (tools: Ref<any>, itemRefs: Ref<Array<any>>) => {
   const ellipsis = ref<boolean>(false)

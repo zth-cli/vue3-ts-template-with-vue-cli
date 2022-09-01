@@ -1,6 +1,6 @@
-import { RouteRecordRaw } from "vue-router"
+import { RouteRecordRaw } from 'vue-router'
 
-declare module "vue-router" {
+declare module 'vue-router' {
   interface RouteMeta {
     // 是可选的
     isAdmin?: boolean

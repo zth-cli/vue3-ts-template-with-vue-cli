@@ -1,5 +1,5 @@
-import * as icons from "@element-plus/icons-vue"
-import { App } from "vue"
+import * as icons from '@element-plus/icons-vue'
+import { App } from 'vue'
 
 // 全局注册element-plus svg-icons
 export default function RegisterIcons(app: App) {

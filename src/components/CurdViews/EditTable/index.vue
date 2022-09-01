@@ -42,7 +42,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, watch } from "vue"
+import { ref, watch } from 'vue'
 
 interface Icolumns {
   name: string
@@ -64,20 +64,20 @@ const props = withDefaults(
     propData: () => [],
     columns: () => [
       {
-        name: "content",
-        label: "评价",
-        type: "textarea",
+        name: 'content',
+        label: '评价',
+        type: 'textarea',
         with: 200,
       },
     ],
   }
 )
 
-const emit = defineEmits(["update:propData"])
+const emit = defineEmits(['update:propData'])
 
 props.columns.forEach((item) => {
-  rowData.value[item.name] = ""
-  if (item.type === "select" && item.multiple) {
+  rowData.value[item.name] = ''
+  if (item.type === 'select' && item.multiple) {
     rowData.value[item.name] = []
   }
 })
@@ -89,7 +89,7 @@ const addInitData = () => {
 watch(
   () => TableData.value,
   (newData) => {
-    emit("update:propData", newData)
+    emit('update:propData', newData)
   },
   { deep: true }
 )
@@ -104,6 +104,7 @@ watch(
 <style lang="scss">
 ._Edit_table {
   width: 100%;
+  background-color: var(--content-background);
   .add-area {
     width: 100%;
     border: 1px dashed #e4e7ed;
