@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import { useTheme } from '@/hooks'
+import { useThemeStore } from '@/store2/theme'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 const locale = zhCn
 console.log('hello script setup')
-const { setTheme } = useTheme()
-setTheme('dark')
-// window.addEventListener(
-//   'click',
-//   (event: Event) => {
-//     console.log(event)
-//   },
-//   false
-// )
+const theme = useThemeStore()
+theme.setTheme('blue')
+console.log(theme.colorList)
 </script>
 
 <template>

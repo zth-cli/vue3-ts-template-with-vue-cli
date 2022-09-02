@@ -3,10 +3,11 @@ import { hexToRgba, getDarkColor } from '@/utils'
  * 主题切换
  * @param theme
  */
+type themeItem = { label: string; value: string }
 export function useTheme() {
-  const getTheme = () => {
+  const getTheme = (): Array<themeItem> => {
     const el = document.documentElement
-    const colorValues: Array<{ [x: string]: string }> = []
+    const colorValues: Array<themeItem> = []
     const mainColors = ['primary', 'warning', 'danger', 'success']
     mainColors.forEach((item) => {
       const color = getComputedStyle(el).getPropertyValue('--color-' + item)
@@ -14,7 +15,8 @@ export function useTheme() {
     })
     return colorValues
   }
-  const setTheme = (theme?: string) => {
+  const setTheme = (theme?: string): Array<themeItem> => {
+    const colorList: Array<themeItem> = []
     const localTheme = localStorage.getItem('_theme_') || ''
     const el = document.documentElement
     el.setAttribute('class', theme ? theme : localTheme)
@@ -31,8 +33,10 @@ export function useTheme() {
           ? getDarkColor(item.value.trim(), 0.1 * ele - 0.1)
           : hexToRgba(item.value, 1 - 0.1 * ele)
         el.style.setProperty(`--el-color-${item.label}-light-${ele}`, colorLight as string)
+        colorList.push({ label: `${item.label}-${ele}`, value: colorLight as string })
       })
     })
+    return [...colorValues, ...colorList]
   }
   return {
     getTheme,

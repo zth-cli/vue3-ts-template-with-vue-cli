@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import { store } from './store/index'
@@ -11,6 +12,7 @@ import RegisterIcons from './icons/index'
 
 const app = createApp(App)
 RegisterIcons(app)
+app.use(createPinia())
 app.use(toasts)
 // app.use(ElementPlus, { size: "small", zIndex: 3000, locale: zhCn });
 app.use(router)
