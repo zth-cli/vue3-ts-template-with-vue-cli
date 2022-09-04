@@ -14,7 +14,7 @@ interface AppSettingState {
 const env = process.env
 
 function checkStorange(key: string) {
-  const temp = env['VITE_' + key]
+  const temp = env['VUE_APP_' + key]
   return localStorage.getItem(key) !== null ? localStorage.getItem(key) : temp
 }
 

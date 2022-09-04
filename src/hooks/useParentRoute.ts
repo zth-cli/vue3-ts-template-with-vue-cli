@@ -1,10 +1,10 @@
 /*
  * @Author: 阮志雄
- * @Date: 2022-08-29 11:43:25
- * @LastEditTime: 2022-08-29 12:50:31
+ * @Date: 2022-08-30 22:57:36
+ * @LastEditTime: 2022-09-02 22:21:42
  * @LastEditors: 阮志雄
  * @Description: In User Settings Edit
- * @FilePath: \vue3-ts-template-with-webpack\src\hooks\useParentRoute.ts
+ * @FilePath: \vue3-ts-template-with-vue-cli\src\hooks\useParentRoute.ts
  */
 import { IrouteItem } from 'types/globals'
 import { ref, computed, watch } from 'vue'

@@ -17,11 +17,11 @@
 import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useConfigStroe } from '@/store2/appSetting'
 
-const store = useStore()
+const configStroe = useConfigStroe()
 const route = useRoute()
-const menuMode = computed(() => store.getters.menuMode)
+const menuMode = computed(() => configStroe.menuMode)
 console.log(route.fullPath)
 </script>
 <style lang="scss">

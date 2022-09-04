@@ -51,10 +51,9 @@
 <script lang="ts" setup>
 import bus from '@/utils/bus'
 import { reactive, ref, watch } from 'vue'
-import { useStore } from 'vuex'
+import { useConfigStroe } from '@/store2/appSetting'
 
-const store = useStore()
-
+const configStroe = useConfigStroe()
 const colors = ref<any[]>([
   { theme: 'theme3', color: '#397373', name: '经典' },
   { theme: 'theme2', color: '#0e9b92', name: '清爽' },
@@ -64,7 +63,7 @@ const colors = ref<any[]>([
 const themeName = ref<string>(localStorage.getItem('theme') || 'theme2')
 const layout = reactive({
   menuMode: localStorage.getItem('menuMode'),
-  tagsBar: localStorage.getItem('tagsBar') === 'true',
+  tagsBar: localStorage.getItem('tagsBar'),
 })
 const styles = reactive({
   height: 'calc(100% - 55px)',
@@ -82,7 +81,8 @@ const change = () => {
 }
 const saveTheme = (key: string, menuMode?: string) => {
   menuMode ? (layout.menuMode = menuMode) : ''
-  store.dispatch('changeSetting', { key, value: layout[key] })
+  configStroe.changeConfig({ key, value: layout[key] })
+  // store.dispatch('changeSetting', { key, value: layout[key] })
 }
 const changeTheme = (theme: string) => {
   const { VITE_PUBLIC_PATH: publicPath } = process.env
