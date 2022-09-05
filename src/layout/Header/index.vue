@@ -63,7 +63,7 @@ import { removeAllStorge } from '@/utils/auth'
 import { useRouter, useRoute } from 'vue-router'
 import { Ref, ref, unref, computed } from 'vue'
 import bus from '@/utils/bus'
-import { useConfigStroe } from '@/store2/appSetting'
+import { useConfigStroe } from '@/store/appSetting'
 
 const configStroe = useConfigStroe()
 const router = useRouter()

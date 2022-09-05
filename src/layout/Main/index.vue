@@ -17,7 +17,7 @@
 import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import { useRoute } from 'vue-router'
-import { useConfigStroe } from '@/store2/appSetting'
+import { useConfigStroe } from '@/store/appSetting'
 
 const configStroe = useConfigStroe()
 const route = useRoute()

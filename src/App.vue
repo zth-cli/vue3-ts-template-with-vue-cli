@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useThemeStore } from '@/store2/theme'
+import { useThemeStore } from '@/store/theme'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 const locale = zhCn
 console.log('hello script setup')
 const theme = useThemeStore()
-theme.setTheme('blue')
+theme.setTheme()
 console.log(theme.colorList)
 </script>
 

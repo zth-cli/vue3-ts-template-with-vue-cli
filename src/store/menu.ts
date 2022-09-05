@@ -1,29 +1,22 @@
-import { SET_USERMENU } from '../mutation-types'
+import { defineStore } from 'pinia'
 import router from '@/router'
 import addRouter from '@/utils/getRoutes'
 import { getAsyncRoutes } from '@/api'
 import Main from '@/layout/index.vue'
 import routerArr from '@/mock/routerArr'
-interface State {
-  routes: []
-}
-const Menus = {
-  state: (): State => ({
-    routes: JSON.parse(localStorage.getItem('menu')) || [],
-  }),
-  mutations: {
-    [SET_USERMENU]: (state: { routes: any }, menu: any) => {
-      state.routes = menu
-      // localStorage.setItem('menu', JSON.stringify(menu))
-    },
+
+export const useMenuStore = defineStore('menu', {
+  state() {
+    return {
+      routes: JSON.parse(localStorage.getItem('_menu_')) || [],
+    }
   },
+  getters: {},
   actions: {
-    GetUserMenu({ commit }) {
+    getUserMenu() {
       return new Promise((resolve, reject) => {
-        let asyncRoutes = []
-        asyncRoutes = routerArr
+        const asyncRoutes = routerArr
         const routes = addRouter(asyncRoutes)
-        console.log(routes)
         ;(router.options.routes as Array<any>).splice(0, 1, {
           path: '/',
           name: 'Main',
@@ -34,7 +27,7 @@ const Menus = {
         router.options.routes.concat(
           ...[
             {
-              component: () => import('../../views/Error/404.vue'),
+              component: () => import('../views/Error/404.vue'),
               meta: { title: '404', isCache: false, requiresAuth: true },
               name: '404error',
               path: '/404error',
@@ -48,11 +41,9 @@ const Menus = {
         router.options.routes.forEach((item) => {
           router.addRoute(item)
         })
-        commit(SET_USERMENU, asyncRoutes)
+        this.routes = asyncRoutes
         resolve(routes)
       })
     },
   },
-  getters: {},
-}
-export default Menus
+})

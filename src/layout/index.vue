@@ -22,7 +22,7 @@ import { Menu } from './Menu'
 import { Header } from './Header'
 import { MainView } from './Main'
 import { Tags } from './TagsView'
-import { useConfigStroe } from '@/store2/appSetting'
+import { useConfigStroe } from '@/store/appSetting'
 import { computed } from 'vue'
 
 const configStroe = useConfigStroe()
