@@ -18,7 +18,7 @@
       </template>
     </CurdView>
     <Overlay v-model="close">
-      <FormData v-bind="fromDataOptions" :before-submit="beforeSubmit"></FormData>
+      <FormData v-if="close" v-bind="fromDataOptions" :before-submit="beforeSubmit"></FormData>
     </Overlay>
   </div>
 </template>
@@ -108,6 +108,13 @@ const fromDataOptions = {
       type: 'date',
       format: 'yyyy-MM-dd',
       span: 12,
+    },
+    {
+      name: 'uploads',
+      label: '上传附件',
+      type: 'upload',
+      span: 24,
+      url: '/api/sys/attach/uploadImg',
     },
     {
       name: 'standardDetails',

@@ -21,9 +21,16 @@
     <p></p>
     {{ result }}
   </div>
+  <HelloWorldVue>
+    <strong>这是默认插槽内容</strong>
+    <template #footer="{ text }"
+      ><strong>具名插槽内容：{{ text }}</strong></template
+    >
+  </HelloWorldVue>
 </template>
 
 <script lang="ts" setup>
+import HelloWorldVue from './renderJSXx.vue'
 import { warn } from '@/utils/log'
 import { downloadByUrl } from '@/utils/downloadFile'
 import { Ref, ref, useAttrs, getCurrentInstance, onMounted } from 'vue'

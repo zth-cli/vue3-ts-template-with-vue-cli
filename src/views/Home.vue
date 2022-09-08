@@ -3,7 +3,6 @@
     <child id="123" ref="childRef" v-dialogDrag @change="getData">
       <h4>默认内容</h4>
     </child>
-    <el-tag type="danger" effect="dark" closable>危险</el-tag>
     <overlay v-model="close" title="弹框" oheight="50vh"></overlay>
   </div>
 </template>

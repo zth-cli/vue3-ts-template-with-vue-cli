@@ -11,31 +11,14 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./types"
-    ],
-    "types": [
-      "webpack-env",
-      "element-plus/global"
-    ],
+    "typeRoots": ["./node_modules/@types/", "./types"],
+    "types": ["webpack-env", "element-plus/global"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "components/*": [
-        "./src/components/*"
-      ],
-      "api/*": [
-        "./src/api/*"
-      ]
+      "@/*": ["src/*"],
+      "components/*": ["./src/components/*"],
+      "api/*": ["./src/api/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
     "src/**/*.ts",
@@ -49,7 +32,5 @@
     "tests/**/*.tsx",
     "auto-imports.d.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
