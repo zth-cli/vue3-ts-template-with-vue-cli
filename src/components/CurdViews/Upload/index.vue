@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-upload v-bind="$attrs" action="customize" list-type="picture-card" :http-request="uploadFile">
+    <el-upload v-bind="$attrs" list-type="picture-card" :http-request="uploadFile">
       <el-icon><Plus /></el-icon>
-      <template #file="{ file }" v-if="file">
+      <template #file="{ file }">
         <template v-if="getExtname(file.name)">
           <img class="el-upload-list__item-thumbnail" :src="getExtname(file.name)" :alt="file.name" />
         </template>
