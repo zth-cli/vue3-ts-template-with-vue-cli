@@ -5,32 +5,32 @@
       <edit></edit>
     </el-icon>
     <h2>{{ props.name }}</h2>
-    <el-button type="primary" size="small" @click="clickHandle">点击</el-button>
-    <el-button type="primary" size="small" @click="clickHandles">提示</el-button>
-    <el-button type="primary" size="small" @click="debHandler">防抖</el-button>
-    <el-button v-permission="{ action: ['admin'], effect: 'disabled' }" type="primary" size="small">鉴权</el-button>
-    <el-button type="warning" size="small" @click="warn('控制台抛异常')">控制台抛异常</el-button>
+    <el-button type="primary" @click="clickHandle">点击</el-button>
+    <el-button type="primary" @click="clickHandles">提示</el-button>
+    <el-button type="primary" @click="debHandler">防抖</el-button>
+    <el-button v-permission="{ action: ['admin'], effect: 'disabled' }" type="primary">鉴权</el-button>
+    <el-button type="warning" @click="warn('控制台抛异常')">控制台抛异常</el-button>
     <el-button
       type="primary"
-      size="small"
       @click="downloadByUrl({ url: 'http://192.168.3.165:8888/index.html', fileName: 'a.html' })"
       >下载</el-button
     >
     <slot name="default"></slot>
     {{ loading }}
     <p></p>
-    {{ result }}
+    <countTo prefix="$" :start-val="1" :end-val="100" />
+    <renderJsx>
+      <strong>这是默认插槽内容</strong>
+      <template #footer="{ text }"
+        ><strong>具名插槽内容：{{ text }}</strong></template
+      >
+    </renderJsx>
   </div>
-  <HelloWorldVue>
-    <strong>这是默认插槽内容</strong>
-    <template #footer="{ text }"
-      ><strong>具名插槽内容：{{ text }}</strong></template
-    >
-  </HelloWorldVue>
 </template>
 
 <script lang="ts" setup>
-import HelloWorldVue from './renderJSXx.vue'
+import renderJsx from './renderJSX.vue'
+import { countTo } from './CountTo'
 import { warn } from '@/utils/log'
 import { downloadByUrl } from '@/utils/downloadFile'
 import { Ref, ref, useAttrs, getCurrentInstance, onMounted } from 'vue'

@@ -16,8 +16,8 @@ function addRouter(routeArr: Array<IrouteItem>): RouteConfig[] {
         path: item.path,
         name: item.componentName,
         // component: (resolve) => require([`@/views/${item.componentPath}.vue`], resolve),
-        component: () => import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`),
-        // component: lazyLoad(await import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`)),
+        // component: () => import(/* webpackChunkName: "[request]" */ `@/views/${item.componentPath}.vue`),
+        component: lazyLoad(item.componentPath),
         // component: lazyLoad(item.componentPath),
         meta: {
           frameSrc: item.frameSrc ? item.frameSrc : '',
@@ -36,7 +36,7 @@ function addRouter(routeArr: Array<IrouteItem>): RouteConfig[] {
 function lazyLoad(componentPath: string) {
   return defineAsyncComponent({
     // 加载函数
-    loader: () => import(`../views/${componentPath}.vue`),
+    loader: () => import(/* webpackChunkName: "[request]" */ `../views/${componentPath}.vue`),
 
     // 加载异步组件时使用的组件
     loadingComponent: NotError,

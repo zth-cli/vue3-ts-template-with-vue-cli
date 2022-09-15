@@ -58,7 +58,7 @@ declare module '@vue/runtime-core' {
     FormData: typeof import('./src/components/CurdViews/FormData/index.vue')['default']
     LazyTree: typeof import('./src/components/CurdViews/LazyTree.vue')['default']
     Overlay: typeof import('./src/components/Overlay/index.vue')['default']
-    RenderJSXx: typeof import('./src/components/renderJSXx.vue')['default']
+    RenderJSX: typeof import('./src/components/renderJSX.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Src: typeof import('./src/components/CountTo/src/index.vue')['default']
