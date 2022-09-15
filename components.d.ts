@@ -57,6 +57,7 @@ declare module '@vue/runtime-core' {
     FlowBar: typeof import('./src/components/CurdViews/FlowBar/FlowBar.vue')['default']
     FormData: typeof import('./src/components/CurdViews/FormData/index.vue')['default']
     LazyTree: typeof import('./src/components/CurdViews/LazyTree.vue')['default']
+    MouseTracker: typeof import('./src/components/MouseTracker.vue')['default']
     Overlay: typeof import('./src/components/Overlay/index.vue')['default']
     RenderJSX: typeof import('./src/components/renderJSX.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
