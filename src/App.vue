@@ -4,7 +4,7 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 const locale = zhCn
 console.log('hello script setup')
 const theme = useThemeStore()
-theme.setTheme()
+theme.setSysTheme()
 console.log(theme.colorList)
 </script>
 

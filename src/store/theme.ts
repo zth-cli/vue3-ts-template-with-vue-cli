@@ -1,18 +1,43 @@
-import { defineStore } from 'pinia'
+import { defineStore, PiniaCustomStateProperties } from 'pinia'
 import { useTheme } from '@/hooks'
-const { getTheme, setTheme } = useTheme()
+import { menuCssVars, initMenuTheme, updataMenuTheme } from '@/styles/CsstoJs/menuCssVar'
+const { getTheme, setTheme, getMode } = useTheme()
 
 export const useThemeStore = defineStore('theme', {
   state() {
     return {
+      isDark: getMode(),
       colorList: getTheme(),
+      menuColor: initMenuTheme(),
     }
   },
-  getters: {},
+  getters: {
+    menuCss: (state) => {
+      // @ts-ignore
+      if (state.isDark) {
+        const el = document.documentElement
+        return {
+          backgroundColor: getComputedStyle(el).getPropertyValue(`--content-background`),
+          textColor: '#CFD3DC',
+          activeTextColor: '',
+        }
+      }
+      // @ts-ignore
+      return state.menuColor
+    },
+  },
   actions: {
-    setTheme(themeName?: string) {
+    setSysTheme(themeName?: string) {
       const list = setTheme(themeName)
       this.colorList = list
+      this.isDark = getMode()
+      this.menuColor = initMenuTheme()
+    },
+    setMenuTheme(index?: number) {
+      if (!this.isDark) {
+        this.menuColor = menuCssVars[index]
+        updataMenuTheme(index)
+      }
     },
   },
 })

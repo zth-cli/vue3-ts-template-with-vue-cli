@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Child: typeof import('./src/components/child.vue')['default']
+    CollapseTransition: typeof import('./src/components/Transition/CollapseTransition.vue')['default']
     ConditionBar: typeof import('./src/components/CurdViews/ConditionBar/ConditionBar.vue')['default']
     CurdTable: typeof import('./src/components/CurdViews/CurdTable/CurdTable.vue')['default']
     CurdViews: typeof import('./src/components/CurdViews/index.vue')['default']

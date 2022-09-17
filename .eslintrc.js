@@ -38,7 +38,7 @@ module.exports = {
     'vue/no-v-html': 'off',
     'no-var': 'error',
     'no-undef': 0,
-    'prettier/prettier': ['error', { semi: false, printWidth: 120, singleQuote: true }],
+    'prettier/prettier': ['error', { semi: false, printWidth: 120, singleQuote: true, endOfLine: 'auto'  }],
     // 禁止出现重复的 case 标签
     'no-duplicate-case': 'warn',
     // 禁止出现空语句块
