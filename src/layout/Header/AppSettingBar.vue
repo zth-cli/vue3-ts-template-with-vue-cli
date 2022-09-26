@@ -8,13 +8,13 @@
             class="drawer-block-checkbox-item drawer-block-checkbox-item-slide"
             @click="saveTheme('menuMode', 'vertical')"
           >
-            <i v-show="layout.menuMode === 'vertical'" class="selectIcon el-icon-check" />
+            <el-icon v-show="layout.menuMode === 'vertical'" class="selectIcon"><Select /></el-icon>
           </div>
           <div
             class="drawer-block-checkbox-item drawer-block-checkbox-item-top"
             @click="saveTheme('menuMode', 'horizontal')"
           >
-            <i v-show="layout.menuMode === 'horizontal'" class="selectIcon el-icon-check" />
+            <el-icon v-show="layout.menuMode === 'horizontal'" class="selectIcon"><Select /></el-icon>
           </div>
         </div>
       </li>
@@ -23,7 +23,7 @@
         <div class="drawer-block-checkbox">
           <template v-for="(item, index) in colors" :key="index">
             <div class="theme-color-block" :style="{ background: item.color }" @click="changeTheme(item)">
-              <i v-show="themeName === item.theme" class="selectIcon el-icon-check" />
+              <el-icon v-show="themeName === item.theme" class="selectIcon"><Select /></el-icon>
             </div>
           </template>
         </div>
