@@ -63,7 +63,7 @@ import { useThemeStore } from '@/store/theme'
 const configStroe = useConfigStroe()
 const themeStroe = useThemeStore()
 const colors = ref<any[]>([
-  { theme: '', color: '#0fa59b', name: '经典' },
+  { theme: 'default', color: '#0fa59b', name: '经典' },
   { theme: 'blue', color: '#550fa5', name: '清爽' },
   { theme: 'dark', color: '#000', name: '暗夜' },
 ])

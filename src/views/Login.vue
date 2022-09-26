@@ -122,4 +122,3 @@ const isValidPhone = computed(() => {
   font-size: 16px;
 }
 </style>
->
