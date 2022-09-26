@@ -103,3 +103,8 @@ defineExpose({
   reset,
 })
 </script>
+<script lang="ts">
+export default {
+  name: 'countTo',
+}
+</script>
