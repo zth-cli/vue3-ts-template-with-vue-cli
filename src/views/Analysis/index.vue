@@ -1,200 +1,123 @@
 <template>
   <el-row :gutter="10">
     <el-col :span="12"> <div ref="chartRef" :style="{ height: '280px', width: '100%' }"></div></el-col>
-    <el-col :span="12"><div ref="chartRef1" :style="{ height: '280px', width: '100%' }"></div></el-col>
+    <el-col :span="24"
+      ><child id="123" ref="childRef" v-dialogDrag @change="getData">
+        <h4>默认内容</h4>
+      </child>
+      <overlay v-model="close" title="弹框" oheight="50vh"></overlay
+    ></el-col>
   </el-row>
 </template>
-<script lang="ts">
-import { defineComponent, onMounted, ref, Ref } from 'vue'
+<script lang="ts" setup>
+import { onMounted, ref, Ref } from 'vue'
 
 import { useECharts } from '@/hooks/useECharts'
+import child from '@/components/child.vue'
+import { overlay } from '@/components/Overlay'
 
-export default defineComponent({
-  setup() {
-    const chartRef = ref<HTMLDivElement | null>(null)
-    const chartRef1 = ref<HTMLDivElement | null>(null)
-    const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>)
-    const { setOptions: setOptions1 } = useECharts(chartRef1 as Ref<HTMLDivElement>)
+const close = ref<boolean>(false)
+onMounted(() => {
+  console.log(process.env.MODE)
+  console.log(process.env)
 
-    onMounted(() => {
-      setOptions({
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            lineStyle: {
-              width: 1,
-              color: '#019680',
-            },
+  console.log(childRef.value)
+})
+const childRef = ref<InstanceType<typeof child>>(null)
+const getData = (id: number) => {
+  close.value = !close.value
+}
+const chartRef = ref<HTMLDivElement | null>(null)
+const chartRef1 = ref<HTMLDivElement | null>(null)
+const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>)
+onMounted(() => {
+  setOptions({
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        lineStyle: {
+          width: 1,
+          color: '#019680',
+        },
+      },
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: [
+        '6:00',
+        '7:00',
+        '8:00',
+        '9:00',
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+        '23:00',
+      ],
+      splitLine: {
+        show: true,
+        lineStyle: {
+          width: 1,
+          type: 'solid',
+          color: 'rgba(226,226,226,0.5)',
+        },
+      },
+      axisTick: {
+        show: false,
+      },
+    },
+    yAxis: [
+      {
+        type: 'value',
+        max: 80000,
+        splitNumber: 4,
+        axisTick: {
+          show: false,
+        },
+        splitArea: {
+          show: true,
+          areaStyle: {
+            color: ['rgba(255,255,255,0.2)', 'rgba(226,226,226,0.2)'],
           },
         },
-        xAxis: {
-          type: 'category',
-          boundaryGap: false,
-          data: [
-            '6:00',
-            '7:00',
-            '8:00',
-            '9:00',
-            '10:00',
-            '11:00',
-            '12:00',
-            '13:00',
-            '14:00',
-            '15:00',
-            '16:00',
-            '17:00',
-            '18:00',
-            '19:00',
-            '20:00',
-            '21:00',
-            '22:00',
-            '23:00',
-          ],
-          splitLine: {
-            show: true,
-            lineStyle: {
-              width: 1,
-              type: 'solid',
-              color: 'rgba(226,226,226,0.5)',
-            },
-          },
-          axisTick: {
-            show: false,
-          },
+      },
+    ],
+    grid: { left: '1%', right: '1%', top: '2  %', bottom: 0, containLabel: true },
+    series: [
+      {
+        smooth: true,
+        data: [
+          111, 222, 4000, 18000, 33333, 55555, 66666, 33333, 14000, 36000, 66666, 44444, 22222, 11111, 4000, 2000, 500,
+          333, 222, 111,
+        ],
+        type: 'line',
+        areaStyle: {},
+        itemStyle: {
+          color: '#5ab1ef',
         },
-        yAxis: [
-          {
-            type: 'value',
-            max: 80000,
-            splitNumber: 4,
-            axisTick: {
-              show: false,
-            },
-            splitArea: {
-              show: true,
-              areaStyle: {
-                color: ['rgba(255,255,255,0.2)', 'rgba(226,226,226,0.2)'],
-              },
-            },
-          },
+      },
+      {
+        smooth: true,
+        data: [
+          33, 66, 88, 333, 3333, 5000, 18000, 3000, 1200, 13000, 22000, 11000, 2221, 1201, 390, 198, 60, 30, 22, 11,
         ],
-        grid: { left: '1%', right: '1%', top: '2  %', bottom: 0, containLabel: true },
-        series: [
-          {
-            smooth: true,
-            data: [
-              111, 222, 4000, 18000, 33333, 55555, 66666, 33333, 14000, 36000, 66666, 44444, 22222, 11111, 4000, 2000,
-              500, 333, 222, 111,
-            ],
-            type: 'line',
-            areaStyle: {},
-            itemStyle: {
-              color: '#5ab1ef',
-            },
-          },
-          {
-            smooth: true,
-            data: [
-              33, 66, 88, 333, 3333, 5000, 18000, 3000, 1200, 13000, 22000, 11000, 2221, 1201, 390, 198, 60, 30, 22, 11,
-            ],
-            type: 'line',
-            areaStyle: {},
-            itemStyle: {
-              color: '#019680',
-            },
-          },
-        ],
-      })
-      setOptions1({
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            lineStyle: {
-              width: 1,
-              color: '#019680',
-            },
-          },
+        type: 'line',
+        areaStyle: {},
+        itemStyle: {
+          color: '#019680',
         },
-        xAxis: {
-          type: 'category',
-          boundaryGap: false,
-          data: [
-            '6:00',
-            '7:00',
-            '8:00',
-            '9:00',
-            '10:00',
-            '11:00',
-            '12:00',
-            '13:00',
-            '14:00',
-            '15:00',
-            '16:00',
-            '17:00',
-            '18:00',
-            '19:00',
-            '20:00',
-            '21:00',
-            '22:00',
-            '23:00',
-          ],
-          splitLine: {
-            show: true,
-            lineStyle: {
-              width: 1,
-              type: 'solid',
-              color: 'rgba(226,226,226,0.5)',
-            },
-          },
-          axisTick: {
-            show: false,
-          },
-        },
-        yAxis: [
-          {
-            type: 'value',
-            max: 80000,
-            splitNumber: 4,
-            axisTick: {
-              show: false,
-            },
-            splitArea: {
-              show: true,
-              areaStyle: {
-                color: ['rgba(255,255,255,0.2)', 'rgba(226,226,226,0.2)'],
-              },
-            },
-          },
-        ],
-        grid: { left: '1%', right: '1%', top: '2  %', bottom: 0, containLabel: true },
-        series: [
-          {
-            smooth: true,
-            data: [
-              111, 222, 4000, 18000, 33333, 55555, 66666, 33333, 14000, 36000, 66666, 44444, 22222, 11111, 4000, 2000,
-              500, 333, 222, 111,
-            ],
-            type: 'line',
-            areaStyle: {},
-            itemStyle: {
-              color: '#5ab1ef',
-            },
-          },
-          {
-            smooth: true,
-            data: [
-              33, 66, 88, 333, 3333, 5000, 18000, 3000, 1200, 13000, 22000, 11000, 2221, 1201, 390, 198, 60, 30, 22, 11,
-            ],
-            type: 'line',
-            areaStyle: {},
-            itemStyle: {
-              color: '#019680',
-            },
-          },
-        ],
-      })
-    })
-    return { chartRef, chartRef1 }
-  },
+      },
+    ],
+  })
 })
 </script>
