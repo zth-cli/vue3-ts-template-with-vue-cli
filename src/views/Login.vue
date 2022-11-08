@@ -3,26 +3,26 @@
     <div class="login_content">
       <div class="loginbox">
         <h2 class="login_title">
-          <img src="../assets/img/logo1.png" width="163" height="54" alt />
+          <img src="../assets/img/logo1.png" width="163" height="54" />
           {{ slogan }}
         </h2>
         <div class="formbox">
           <!--用户名-->
           <div class="bdbox">
-            <el-input placeholder="用户名" prefix-icon="el-icon-user" v-model="username"></el-input>
+            <el-input v-model="username" placeholder="用户名" prefix-icon="el-icon-user"></el-input>
           </div>
 
           <!--密码-->
           <div class="bdbox">
             <el-input
+              v-model="passwords"
               type="password"
               placeholder="密码"
-              v-model="passwords"
               autocomplete="off"
               prefix-icon="el-icon-c-scale-to-original"
             ></el-input>
           </div>
-          <el-button type="primary" v-debounce="loginajax" :loading="isLoging" class="login_btn">登录</el-button>
+          <el-button v-debounce="loginajax" type="primary" :loading="isLoging" class="login_btn">登录</el-button>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@ import { ref, Ref, computed } from 'vue'
 import { useMenuStore } from '@/store/menu'
 import { useRouter } from 'vue-router'
 import { setStorge } from '@/utils/auth'
-const slogan = '融合平台'
+const slogan = 'ZerotoHero-admin'
 const mobile: Ref<string> = ref('')
 const username: Ref<string> = ref('')
 const passwords: Ref<string> = ref('')
