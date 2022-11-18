@@ -19,9 +19,9 @@ import { RouterView } from 'vue-router'
 import { useRoute } from 'vue-router'
 import { useConfigStroe } from '@/store/appSetting'
 
-const configStroe = useConfigStroe()
+const store = useConfigStroe()
 const route = useRoute()
-const menuMode = computed(() => configStroe.menuMode)
+const menuMode = computed(() => store.menuMode)
 console.log(route.fullPath)
 </script>
 <style lang="scss">
@@ -37,8 +37,8 @@ console.log(route.fullPath)
     left: 0;
     right: 0;
     transition: all 0.8s cubic-bezier(0.55, 0, 0.1, 1);
-    padding: 0 12px;
     box-sizing: border-box;
+    padding: 0 12px;
   }
 }
 </style>

@@ -158,10 +158,6 @@ const showTags = computed(() => tagsList.value.length > 0)
     .el-tabs__nav-prev {
       line-height: 32px;
     }
-    // .el-tabs__item.is-active {
-    //   @include font-color(#fff);
-    //   @include tool-bar-color();
-    // }
     .el-tabs__nav {
       border: none;
     }
